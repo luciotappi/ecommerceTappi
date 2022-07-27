@@ -11,18 +11,34 @@
 // );
 // }
 
+
+// imports de navbar
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
+// imports bootstrap
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Popper from '@popperjs/core';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap-icons/font/bootstrap-icons.css'; 
+
+
+//imports
 import pic from ".//Tappi-logo.png";
+
+import CartWidget from '../CartWidget/CartWidget';
 
   function NavBar() {
     return (
+      
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
+          
           <img
               src={pic}
               width="30"
@@ -32,6 +48,7 @@ import pic from ".//Tappi-logo.png";
             />
              Tappi electronics</Navbar.Brand>
           
+             
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">  
             <Nav className="me-auto">
@@ -56,6 +73,8 @@ import pic from ".//Tappi-logo.png";
               </NavDropdown>
             </Nav>
             <Nav>
+              
+            <CartWidget/>
               <Nav.Link href="#deets">Sobre Nosotros</Nav.Link>
               <Nav.Link href="#deets">Contacto</Nav.Link>
             </Nav>
