@@ -8,6 +8,8 @@ import Item from "../Item";
 
 import getFetch from '../../Data/Data';
 
+import './ItemList.css'
+
 function ItemList() {
 
 const[data,setData] = useState([])
@@ -29,7 +31,15 @@ console.log(data.length);
         
   <Row xs={1} md={6} className="g-4 h-100 d-flex">
     {
-        loading ? <h2 style={{height:'100vh'}}>CARGANDO...</h2>:
+        loading ? 
+        <div className="loading">
+        <h2 style={{height:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
+        {/* <img src={"../images/WMDx.gif"}></img> */}
+        <div class="loader-wheel"></div>
+
+        </div>
+       
+        :
     Array.from({ length: data.length }).map((_, idx) => (
         
       <Col style={{height:'100vh'}}>
