@@ -1,0 +1,25 @@
+.btnQty {
+    background-color:'transparent';
+    font-family: 'Montserrat';
+    background:rgba(57,180,224,1);
+    border-radius: 50%;
+	border:none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff; 
+    font-size:25px;
+    font-weight: bolder;
+    height: 2.2vw;
+    width: 2.2vw;
+    /* padding:1% 1%; */
+	text-decoration:none;   
+    transition: 0.5s;
+    opacity:0.5;
+}
+
+.btnQty:hover {
+	opacity: 1;
+   
+
+	
+}

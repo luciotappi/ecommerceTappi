@@ -1,0 +1,27 @@
+.btnAddCart {
+    background-color:'transparent';
+    font-family: 'Montserrat';
+    background:rgba(57,180,224,1);
+    /* border-radius:28px; */
+	border:none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff; 
+    padding:1% 1%;
+	text-decoration:none;   
+    transition: 0.5s;
+    opacity:0.5;
+}
+
+.btnAddCart:hover:enabled {
+	opacity: 1;
+   
+	
+}
+
+.btnAddCart:disabled,
+.btnAddCart[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
