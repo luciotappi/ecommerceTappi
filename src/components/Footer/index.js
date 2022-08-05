@@ -131,7 +131,7 @@ export default function Footer(){
         
                   <ul class="list-unstyled mb-0">
                      <p class="text-start">
-                        <i class="bi bi-whatsapp"></i>  +54 9 2235016285
+                        <i class="bi bi-whatsapp"></i>  +54 9 telefono
                     </p>
                     <p class="text-start">
                         <i class="bi bi-geo"></i>   Direccion , Mar del Plata, Buenos Aires
