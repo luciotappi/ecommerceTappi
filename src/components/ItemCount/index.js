@@ -1,9 +1,6 @@
 import { useState , useEffect} from "react";
 
-// imports bootstrap
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
  
 // Own CSS 
 
@@ -57,7 +54,7 @@ function ItemCount({stock, initial, onAdd}) {
 
     function decQty(){
 
-        if (quantity ==1)
+        if (quantity <=initial)
         {
           console.log('la cantidad minima a pedir es ' + quantity);       
         } else{

@@ -11,6 +11,7 @@ function App() {
       <NavBar/>
      
       <ItemListContainer greetings={'Pagina en construcción... Lamentamos las molestias! :('}/> 
+      
       {/* <ItemCount stock= '5' initial ='1'/> */}
     </div>
   );

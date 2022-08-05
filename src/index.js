@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 // bootstrap 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import Popper from '@popperjs/core';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

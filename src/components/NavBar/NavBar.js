@@ -18,15 +18,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-
-// imports bootstrap
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Popper from '@popperjs/core';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import 'bootstrap-icons/font/bootstrap-icons.css'; 
-
-
 //imports
 import pic from ".//Tappi-logo.png";
 

@@ -7,7 +7,7 @@ const Data =[
           "info":"https://arduino.cl/arduino-uno/", 
           "image":"../images/arduino-uno.png",
           "stock": 5,
-          "initial":1
+          "initial":3
           
           
         },

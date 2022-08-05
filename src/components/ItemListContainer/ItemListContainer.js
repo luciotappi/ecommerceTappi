@@ -1,5 +1,6 @@
 
 import ItemList from "../ItemList";
+import ItemDetailContainer from "../ItemDetailContainer";
 
 import pic from ".//under-construction.jpg";
 import pic2 from ".//under-construction2.jpg";
@@ -34,8 +35,13 @@ function ItemListContainer(props) {
 
 
   return (
+    <div>
+      <ItemList></ItemList>
+     <ItemDetailContainer /> 
+    </div>
     
-    <ItemList></ItemList>
+   
+    
   
   );
 
