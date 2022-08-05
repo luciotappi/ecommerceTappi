@@ -5,14 +5,15 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 import ItemCount from './components/ItemCount'; // no es necesario en este caso que el path sea ../ItemCount/ItemCount ya que el archivo .js se llama index.js
 import CardProduct from './components/CardProduct'; // para importar funciones 
+import Footer from './components/Footer'; // para importar Footer
 function App() {
   return (
     <div className="App">
       <NavBar/>
-     
+  
       <ItemListContainer greetings={'Pagina en construcción... Lamentamos las molestias! :('}/> 
       
-      {/* <ItemCount stock= '5' initial ='1'/> */}
+      <Footer/>
     </div>
   );
 }

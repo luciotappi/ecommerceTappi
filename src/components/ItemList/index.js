@@ -10,41 +10,24 @@ import getFetch from '../../Data/Data';
 
 import './ItemList.css'
 
-function ItemList() {
+function ItemList(data) {
 
-const[data,setData] = useState([])
-const[loading,setLoading]=useState(true)
 
-useEffect(()=>{
-  getFetch
-  .then((resp)=>setData(resp))
-  .catch(err=>console.log(err))
-  .finally(()=>setLoading(false))
-},[])
-
-console.log(data);
-
-console.log("LOS DATOS SON : " + {data});
+console.log("ACA ENTRE");
+console.log(data.data.length);
+console.log("Los datos son en ItemList son : " + data)
 console.log(data.length);
-
     return (
         
   <Row xs={1} md={6} className="g-4 h-100 d-flex">
     {
-        loading ? 
-        <div className="loading">
-        <h2 style={{height:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
-        {/* <img src={"../images/WMDx.gif"}></img> */}
-        <div class="loader-wheel"></div>
-
-        </div>
        
-        :
-    Array.from({ length: data.length }).map((_, idx) => (
+       
+    Array.from({ length: data.data.length }).map((_, idx) => (
         
-      <Col style={{height:'100vh'}}>
+      <Col key={data.data[idx].id} style={{height:'100vh'}}>
 
-      <Item key={data[idx].id} title={data[idx].title} description={data[idx].description} price={data[idx].price} info={data[idx].info} stock={data[idx].stock} initial={data[idx].initial} image={data[idx].image} ></Item>
+      <Item  title={data.data[idx].title} description={data.data[idx].description} price={data.data[idx].price} info={data.data[idx].info} stock={data.data[idx].stock} initial={data.data[idx].initial} image={data.data[idx].image} ></Item>
         
       </Col>
     ))}
