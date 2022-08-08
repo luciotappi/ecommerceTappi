@@ -12,7 +12,8 @@ function ItemDetailContainer(props) {
   const {idItem} = useParams();
 
   useEffect(()=>{
-    getItem(idItem)
+    // getItem(idItem)
+    getItem(0)
     .then((resp)=>setData(resp))
     .catch(err=>console.log(err))
     .finally(()=>setLoading(false))

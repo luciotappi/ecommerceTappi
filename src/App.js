@@ -18,24 +18,24 @@ import {Routes, Route} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      {/* <NavBar/>
+      <NavBar/>
   
       <ItemListContainer greetings={'Pagina en construcción... Lamentamos las molestias! :('}/> 
       <ItemDetailContainer /> 
-      <Footer/> */}
+      <Footer/>
 
 
-      <NavBar/>
+      {/* <NavBar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about-us' element={<About/>}/>
         {/* <Route path='/microcontroladores' element={<ItemListContainer/>}/> */}
         {/* <Route path='/category/'element={<ItemListContainer/>}/> */}
-        <Route path='/category/:idCategory'element={<ItemListContainer/>}/>
-        <Route path='/item/:idItem'element={<ItemDetailContainer/>}/>
+        {/* <Route path='/category/:idCategory'element={<ItemListContainer/>}/> */}
+        {/* <Route path='/item/:idItem'element={<ItemDetailContainer/>}/>
       </Routes> 
-      <Footer/> 
-      
+      <Footer/>  */}
+     
 
     </div>
   );
