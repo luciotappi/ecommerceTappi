@@ -27,7 +27,7 @@ console.log(data.length);
         
       <Col key={data.data[idx].id} style={{height:'100vh'}}>
 
-      <Item  title={data.data[idx].title} description={data.data[idx].description} price={data.data[idx].price} info={data.data[idx].info} stock={data.data[idx].stock} initial={data.data[idx].initial} image={data.data[idx].image} ></Item>
+      <Item  id={data.data[idx].id} title={data.data[idx].title} description={data.data[idx].description} price={data.data[idx].price} info={data.data[idx].info} stock={data.data[idx].stock} initial={data.data[idx].initial} image={data.data[idx].image} ></Item>
         
       </Col>
     ))}

@@ -3,6 +3,7 @@ const Data =[
         "id": 0,  
         "title": "Arduino Uno",
           "description": "Placa de desarrollo Arduino Uno basada en ATMega328P. Chip CH340 + Cable de programacion",
+          "descriptionLarge": "Microcontrolador: ATmega328.Tension de Operacion (nivel logico): 5 V. Tension de Alimentacion (pin Vin): 7-12 V. Pines E/S Digitales: 14 (de los cuales 6 proveen de salida PWM). Entradas Analogicas: 6 (pueden usarse como digitales). Corriente max por cada PIN de E/S: 40 mA. Memoria Flash: 32 KB de los cuales 0.5KB son usados por el bootloader. SRAM: 2 KB. EEPROM: 1 KB. Frecuencia de reloj:16 MHz",
           "price":"$4000",
           "info":"https://arduino.cl/arduino-uno/", 
           "image":"../images/arduino-uno.png",
@@ -38,18 +39,46 @@ const Data =[
         } 
       ]
   
-      const getFetch = new Promise((res,rej)=>{
 
-        let condition = true
-        if (condition){
+      const getItem = function (Item){
+
+        return new Promise((res,rej)=>
+        {
+
+          let condition = true
+          if (condition){
             setTimeout(()=>{
-                res(Data)
-            },2000);
-        }
-        else{
+            if (Item != null)  
+            {
+              res(Data[Item])
 
-            rej(console.log("No hay datos"))
-        }
-      })
+            }else
+            {
+              res(Data)
 
-      export default getFetch;
+            }
+              },2000);
+            }
+            else{
+
+                rej(console.log("No hay datos"))
+            }
+          })
+          }
+      // const getFetch = new Promise((res,rej)=>{
+
+      //   let condition = true
+      //   if (condition){
+      //       setTimeout(()=>{
+      //           res(Data)
+      //       },2000);
+      //   }
+      //   else{
+
+      //       rej(console.log("No hay datos"))
+      //   }
+      // })
+
+  
+      // export default getFetch;
+       export default getItem;

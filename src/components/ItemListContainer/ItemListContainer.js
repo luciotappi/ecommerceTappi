@@ -8,6 +8,7 @@ import pic from ".//under-construction.jpg";
 import pic2 from ".//under-construction2.jpg";
 
 import getFetch from '../../Data/Data';
+import getItem from '../../Data/Data';
 
 const estilos = {
 
@@ -39,7 +40,8 @@ function ItemListContainer(props) {
   const[loading,setLoading]=useState(true)
 
   useEffect(()=>{
-    getFetch
+    // getFetch
+    getItem()
     .then((resp)=>setData(resp))
     .catch(err=>console.log(err))
     .finally(()=>setLoading(false))
@@ -62,7 +64,7 @@ function ItemListContainer(props) {
         :
         <div>
           <ItemList data={data}/>
-          <ItemDetailContainer /> 
+         
         </div>
       
     
