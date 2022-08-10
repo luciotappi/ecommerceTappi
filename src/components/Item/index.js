@@ -5,12 +5,11 @@ import {useNavigate} from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-import imageUrl from '../CardProduct/arduino-uno.png';
 import ItemCount from "../ItemCount";
 
 function Item(props) {
 
-  const cantItems =3;
+ 
   console.log("El titulo es : " + props.stock );
   console.log("La imagen es : " + props.image);
 

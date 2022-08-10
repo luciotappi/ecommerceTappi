@@ -1,23 +1,5 @@
-// import Navbar from 'react-bootstrap/Navbar';
-
-
-
-// function  NavBar() {
-//     return (
-//         <Navbar expand="lg" variant="light" bg="light" fixed="top">
-
-//         </Navbar>
-          
-// );
-// }
-
-
 //imports de react
-
-import { Link, useNavigate } from 'react-router-dom';
-
-import {useState, useEffect} from 'react';
-
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // imports de navbar
 import Container from 'react-bootstrap/Container';
@@ -30,15 +12,11 @@ import pic from ".//Tappi-logo.png";
 
 import CartWidget from '../CartWidget/CartWidget';
 
-  function NavBar() {
+  function NavBar(props) {
 
     const navigateFn = useNavigate();
 
-
-
-    // MEJORAR ESTO CON UN USE STATE  y USE EFFECT 
-
-    // const [path,setPath] = useState("/none");
+    const routeCategory = "/category/";
 
     const goToHome = () => {
       
@@ -46,24 +24,7 @@ import CartWidget from '../CartWidget/CartWidget';
         console.log(this);
         navigateFn('/');
     }
-    const goToCategory1 = () => {
-      
-      console.log("NAVBAR");
-        console.log(this);
-        navigateFn('/category/placas');
-    }
-    const goToCategory2 = () => {
-      
-      console.log("NAVBAR");
-        console.log(this);
-        navigateFn('/category/microcontroladores');
-    }
-    const goToCategory3 = () => {
-      
-      console.log("NAVBAR");
-        console.log(this);
-        navigateFn('/category/sensores');
-    }
+  
     const goToCategory4 = () => {
       
       console.log("NAVBAR");
@@ -71,9 +32,8 @@ import CartWidget from '../CartWidget/CartWidget';
         navigateFn('/category/electronica');
     }
 
-
-    const routeCategory = "/category/";
-  
+    console.log("LAS PROPS DE NAVBAR SON ");
+    console.log(props.categories);
     return (
       
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -96,12 +56,11 @@ import CartWidget from '../CartWidget/CartWidget';
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">  
             <Nav className="me-auto">
-              <Nav.Link href=" " onClick={goToCategory1.bind(this)} >Placas</Nav.Link>
-              <Nav.Link href=" " onClick={goToCategory2.bind(this)} >Microcontroladores</Nav.Link>
-              <Nav.Link href=" " onClick={goToCategory3.bind(this)} >Sensores</Nav.Link>
-              <Nav.Link href=" " onClick={goToCategory4.bind(this)} >Electronica</Nav.Link>
-              
-              <NavDropdown title="Soluciones" id="collasible-nav-dropdown">
+            
+              {/* {props.categories.map(u => <Nav.Link  key={u.categoryId} href=" " onClick={goToCategory.bind(u.categoryId)} >{u.categoryName}</Nav.Link> )} */}
+               {/* {props.categories.map(u => <li><Link to={routeCategory+ u.categoryId}>{u.categoryName}</Link></li> )} */}
+              {props.categories.map(u => <NavLink to={routeCategory+ u.categoryId} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
+              {/* <NavDropdown title="Soluciones" id="collasible-nav-dropdown">
                 <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>Automatizacion</NavDropdown.Item>
                 <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>
                   IOT
@@ -113,7 +72,7 @@ import CartWidget from '../CartWidget/CartWidget';
                 <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>
                   Personaliza tu solucion
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
             <Nav>
               

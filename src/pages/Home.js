@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer'; // para importar funciones 
 export default function Home()
 {

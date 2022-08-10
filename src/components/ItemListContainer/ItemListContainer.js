@@ -1,68 +1,62 @@
 import { useEffect, useState } from 'react';
-
+import { useParams} from 'react-router-dom';
 
 import ItemList from "../ItemList";
-import ItemDetailContainer from "../ItemDetailContainer";
 
-import pic from ".//under-construction.jpg";
-import pic2 from ".//under-construction2.jpg";
-
-import getFetch from '../../Data/Data';
-import getItem from '../../Data/Data';
-
-const estilos = {
-
-  fontWeight :'bolder',
-  // alignItems: 'center',
-  fontSize:'200%',
-  fontFamily:'Montserrat',
-  // color:'rgb(252,3,140)',
-  color:'#fff',
-  backgroundColor:'rgb(53,60,66)',
-  backgroundImage: `url(${pic2})`,
-  minHeight:'100%',
-  height:'100vh',
-  backgroundSize:'cover'
-};
-
-
-const Image = () => {
-
-  return (
-
-    <img src={pic} widht='3000'></img>
-  )
-}
+import {getItemByCategory} from '../../Data/Data';
 
 function ItemListContainer(props) {
 
   const[data,setData] = useState([])
   const[loading,setLoading]=useState(true)
+  const {idCategory} = useParams();
+
 
   useEffect(()=>{
     // getFetch
-    getItem()
+    getItemByCategory(idCategory)
     .then((resp)=>setData(resp))
     .catch(err=>console.log(err))
     .finally(()=>setLoading(false))
-  },[])
+
+    // Vuelvo a dejar el loading en true para mostar el loading ante una nueva recarda o navegación
+    return () => {
+      setLoading(true);
+    }
+  },[idCategory])
+
+  useEffect(()=>{
+    // getFetch
+  },[idCategory])
   
   console.log(data);
   
-  console.log("LOS DATOS SON : " + {data});
+  console.log("LOS DATOS SON : " + data);
   console.log(data.length);
+  // var listTitle = "";
+  // console.log("CATEGORY NAME: ");
+  // console.log({idCategory});
+  // if (idCategory != null){
 
+  //   // listTitle = "LISTADO DE CATEGORIA : " + data[0].categoryName;
+  //   listTitle =data[0].categoryName;
+    
+  // } else
+  // {
+  //   listTitle = "NUESTROS PRODUCTOS:"
+  // }
 
   return (
     
        loading ? 
         <div className="loading">
         <h2 style={{height:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
-        {/* <img src={"../images/WMDx.gif"}></img> */}
         <div class="loader-wheel"></div>
         </div>
         :
         <div>
+          <h1>LISTADO DE CATEGORIA : {data[0].categoryName}</h1>
+          {/* <h1>LISTADO DE CATEGORIA : {listTitle}</h1> */}
           <ItemList data={data}/>
          
         </div>

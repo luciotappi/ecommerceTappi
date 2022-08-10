@@ -1,10 +1,11 @@
+//imports de reacts
 import { useEffect, useState } from 'react';
-
 import { useParams} from 'react-router-dom';
 
 import ItemDetail from "../ItemDetail";
-import getFetch from '../../Data/Data';
-import getItem from '../../Data/Data';
+
+import {getItem} from '../../Data/Data';
+
 function ItemDetailContainer(props) {
 
   const[data,setData] = useState([])
@@ -12,8 +13,9 @@ function ItemDetailContainer(props) {
   const {idItem} = useParams();
 
   useEffect(()=>{
-    // getItem(idItem)
-    getItem(0)
+
+     getItem(idItem)
+    // getItem(0)
     .then((resp)=>setData(resp))
     .catch(err=>console.log(err))
     .finally(()=>setLoading(false))
@@ -46,11 +48,7 @@ function ItemDetailContainer(props) {
         <div>
           <ItemDetail {...data}/>
 
-        </div>
-      
-    
-   
-    
+        </div>   
   
   );
 
