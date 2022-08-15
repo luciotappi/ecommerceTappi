@@ -40,7 +40,8 @@ function ItemDetailContainer(props) {
     
        loading ? 
         <div className="loading">
-        <h2 style={{height:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
+          {/* <h2 style={{heigh:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2> */}
+        <h2 style={{heightMin:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
         {/* <img src={"../images/WMDx.gif"}></img> */}
         <div class="loader-wheel"></div>
         </div>

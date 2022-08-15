@@ -7,22 +7,50 @@ import Col from 'react-bootstrap/Col';
 
 import ItemCount from "../ItemCount";
 
+import { useEffect, useState } from 'react';
+import { useNavigate,Link } from 'react-router-dom';
+
+
+import './link-to-cart.css'
+
 function ItemDetail(props) {
 
- 
   console.log("Logs del ItemDetail.js")
-  console.log("El titulo es : " + props.title );
-  console.log("El stock es : " + props.stock);
+  console.log(">>>El titulo es : ", props.title );
+  console.log(">>>El stock es : " , props.stock);
 
+  const [finishState,setFinish] = useState(false);
+  const [quantityItem,setQuantity]=useState(0);
+
+//   useEffect(() => {
+    
+//     console.log('>>La cantidad del carrito es : ',quantityItem);
+//     return ()=> {
+//       console.log('>>Ahora es:',quantityItem);
+//     }
+//   },[quantityItem]);
+
+  function OnAdd(quantityToAdd) {
+    console.log(quantityToAdd);
+    setFinish(true);
+    setQuantity(quantityToAdd);
+  }
+
+//   const linkToCart = ({ isVisible}) => {
+//     if (!isVisible) {
+//       return <h5>My component</h5>
+//     }
+//     return null
+//   }
   return (
         <Container style={{margin:'0', padding:'0', marginLeft:'15%' }}>
-            <Card border="secondary" style={{  color: 'rgb(145,145,145)', marginBottom:'20px', marginLeft:'20px' }} bg="dark" >
+            <Card  border="secondary" style={{  color: 'rgb(145,145,145)', marginBottom:'20px', marginLeft:'20px' }} bg="dark" >
                 <Card.Body>
                     <Card.Title >{props.title}</Card.Title>
                 </Card.Body>
                 <Row>
-                    <Col style ={{margin:'20px'}}>
-                        <Card.Img variant="bottom" src={props.image} style={{width:'18rem',height:'auto'}}/>
+                    <Col style ={{margin:'20px', backgroundColor:'white',display:'flex'}}>
+                        <Card.Img variant="bottom" src={props.image} style={{width:'18rem',height:'auto',margin:'auto',display:'block'}}/>
                     </Col> 
                     <Col>
                         <Row>
@@ -51,7 +79,11 @@ function ItemDetail(props) {
                             </Row>
                             <Row>
                                 <Card.Body>
-                                    <ItemCount stock={props.stock} initial={props.initial} ></ItemCount>
+                                    <ItemCount addON={OnAdd} stock={props.stock} initial={props.initial}></ItemCount>
+                                </Card.Body>
+                                <Card.Body>
+                                    {finishState && <Link className='link-to-cart' to={`/cart`}>Finalizar Compra!</Link>}
+                                    {/* <linkToCart isVisible={finishState} /> */}
                                 </Card.Body>
                             </Row>
                     </Col>

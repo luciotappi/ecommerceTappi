@@ -1,4 +1,4 @@
-const Categories =[
+export const Categories =[
 
   {
     "categoryName":"Microcontroladores",
@@ -18,7 +18,7 @@ const Categories =[
 
 ]
 
-const Data =[
+export const Data =[
     {
         "id": 0,  
         "title": "Arduino Uno",

@@ -10,10 +10,10 @@ import './lblQuantity.css'
 import './lblStockQuantity.css'
 // main function 
 
-function ItemCount({stock, initial, onAdd}) {
+function ItemCount({stock, initial, addON}) {
 
 
-    console.log("El stock ds de " + stock + " unidades");
+    console.log("El stock es de " + stock + " unidades");
     console.log("El valor inicial es de " + initial);
 
     //check stock and handle AddCart btn 
@@ -42,6 +42,7 @@ function ItemCount({stock, initial, onAdd}) {
     //         console.log('Contador listo para ser cleanup!');
     //     }
     // }, [quantity]);
+
     useEffect(() => {
     const btnAddCart =document.getElementsByClassName('btnAddCart');
     console.log(btnAddCart.fontSize);
@@ -85,14 +86,14 @@ function ItemCount({stock, initial, onAdd}) {
 
 
 
-    function addON(){
+    // function addON(){
 
-        if (!stockAvailable){
-            console.log("No hay stock del produto seleccionado.");
-        } else {
-            console.log(quantity);  
-        }
-    };
+    //     if (!stockAvailable){
+    //         console.log("No hay stock del produto seleccionado.");
+    //     } else {
+    //         console.log(quantity);  
+    //     }
+    // };
     
     console.log(quantity);
     return (
@@ -117,7 +118,9 @@ function ItemCount({stock, initial, onAdd}) {
                 </div>
            <div className="row">
                
-                    <button onClick={addON} className="btnAddCart" disabled={!stockAvailable}>Agregar al carrito!</button>
+                    <button onClick={(evt)=>{
+                        addON(quantity)
+                     }} className="btnAddCart" disabled={!stockAvailable}>Agregar al carrito!</button>
                 
            </div>
         </div>

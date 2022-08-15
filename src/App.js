@@ -17,6 +17,18 @@ import {Routes, Route} from 'react-router-dom'
 
 import {searchCategories } from './Data/Data';
 
+
+//
+
+import {Data} from './Data/Data';
+import React from 'react';
+
+// // export const cartContext =React.createContext();
+// import {CartContext} from  './components/context';
+
+// //
+// console.log(cartContext);
+
 function App() {
 
   const[categories,setCategories] = useState([])
@@ -33,8 +45,15 @@ function App() {
   console.log("LAS CATEGORIAS SON : " + categories);
   console.log(categories.length);
 
+  // const saludar = () => {
+  //   console.log('SALUDO DESDE EL CONTEXTO');
+    
+  // }
 
   return (
+
+      // <cartContext.Provider value = {{productos: Data}}>
+  
     <div className="App">
     
       <NavBar categories={categories}/>
@@ -50,6 +69,7 @@ function App() {
       <Footer/> 
     
     </div>
+    // </cartContext.Provider> 
   );
 }
 

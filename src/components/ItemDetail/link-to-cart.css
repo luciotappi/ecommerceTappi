@@ -1,0 +1,17 @@
+.link-to-cart {
+
+    text-decoration: none;
+    background-color:'transparent';
+    font-family: 'Montserrat';
+    background:rgba(57,180,224,1);
+    /* border-radius:28px; */
+	border:none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff; 
+    padding:1% 1%;
+	text-decoration:none;   
+    transition: 0.5s;
+    opacity:0.5;
+}
+
