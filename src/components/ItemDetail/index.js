@@ -7,13 +7,17 @@ import Col from 'react-bootstrap/Col';
 
 import ItemCount from "../ItemCount";
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 
 
 import './link-to-cart.css'
 
+
+import  { CartContext }  from '../../context/CartContext';
 function ItemDetail(props) {
+
+  const {addCartItem} = useContext(CartContext);
 
   console.log("Logs del ItemDetail.js")
   console.log(">>>El titulo es : ", props.title );
@@ -31,6 +35,8 @@ function ItemDetail(props) {
 //   },[quantityItem]);
 
   function OnAdd(quantityToAdd) {
+    // addCartItem({id:props.id, quantity: quantityToAdd} );
+    addCartItem({...props, quantity: quantityToAdd} );
     console.log(quantityToAdd);
     setFinish(true);
     setQuantity(quantityToAdd);

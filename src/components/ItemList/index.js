@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 
 import Col from 'react-bootstrap/Col';
@@ -6,12 +6,15 @@ import Row from 'react-bootstrap/Row';
 
 import Item from "../Item";
 
-import getFetch from '../../Data/Data';
-
 import './ItemList.css'
+
+// import { CartContext } from '../../App';
+// import {CartContext} from  '../../context/CartContext';
 
 function ItemList(data) {
 
+// useContext(CartContext);   
+// console.log('>>>>Productos desde el context : ',CartContext.value);
 
 console.log("ACA ENTRE");
 console.log(data.data.length);
