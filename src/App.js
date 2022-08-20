@@ -16,7 +16,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 
 //routes
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import {searchCategories } from './Data/Data';
 //
 
@@ -30,6 +30,12 @@ import React from 'react';
 import CartCustomContext from './context/CartContext';
 
 function App() {
+
+  useEffect(() => {
+  
+ 
+  
+  },[]);
 
   const[categories,setCategories] = useState([])
   const[loading,setLoading]=useState(true)
@@ -55,10 +61,11 @@ function App() {
        <CartCustomContext>
 
        
-  
+    
     <div className="App">
     
       <NavBar categories={categories}/>
+      
       
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -68,10 +75,11 @@ function App() {
          <Route path='/item/:idItem'element={<ItemDetailContainer/>}/>
          <Route path='/cart'element={<Cart/>}/>
       </Routes> 
-
+      
       <Footer/> 
     
     </div>
+    
     </CartCustomContext>
   );
 }

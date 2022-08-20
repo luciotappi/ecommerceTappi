@@ -25,11 +25,11 @@ import CartWidget from '../CartWidget/CartWidget';
         navigateFn('/');
     }
   
-    const goToCategory4 = () => {
+    const goToCart = () => {
       
-      console.log("NAVBAR");
-        console.log(this);
-        navigateFn('/category/electronica');
+    
+        navigateFn('/cart');
+
     }
 
     console.log("LAS PROPS DE NAVBAR SON ");
@@ -74,9 +74,14 @@ import CartWidget from '../CartWidget/CartWidget';
                 </NavDropdown.Item>
               </NavDropdown> */}
             </Nav>
+
+            
+           
+           
             <Nav>
-              
-            <CartWidget/>
+              <CartWidget/>
+             <div style={{marginLeft:"20px"}}>
+             </div>
               <Nav.Link href="#deets">Sobre Nosotros</Nav.Link>
               <Nav.Link href="#deets">Contacto</Nav.Link>
             </Nav>

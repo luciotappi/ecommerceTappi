@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import ItemCount from "../ItemCount";
 
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate,Link, useParams } from 'react-router-dom';
 
 
 import './link-to-cart.css'
@@ -17,15 +17,18 @@ import './link-to-cart.css'
 import  { CartContext }  from '../../context/CartContext';
 function ItemDetail(props) {
 
-  const {addCartItem} = useContext(CartContext);
+  const {addCartItem,productInCart,isInCart} = useContext(CartContext);
 
   console.log("Logs del ItemDetail.js")
   console.log(">>>El titulo es : ", props.title );
   console.log(">>>El stock es : " , props.stock);
 
-  const [finishState,setFinish] = useState(false);
+  const [finishState,setFinish] = useState(productInCart);
   const [quantityItem,setQuantity]=useState(0);
+  const {idItem} = useParams();
 
+ 
+  
 //   useEffect(() => {
     
 //     console.log('>>La cantidad del carrito es : ',quantityItem);
@@ -34,12 +37,28 @@ function ItemDetail(props) {
 //     }
 //   },[quantityItem]);
 
+
+    //    useEffect(() => {
+    //     isInCart(idItem);
+    //     if (productInCart==true){
+    //         setFinish(true);
+    //         console.log("ACA NO QUIERO ENTRAR");
+    //     }
+    //     return ()=> {
+    //         console.log("EL ITEM ESTABA EN CARRITO ? > ",productInCart)
+            
+
+    //     }
+    //    },[finishState])
+
   function OnAdd(quantityToAdd) {
     // addCartItem({id:props.id, quantity: quantityToAdd} );
     addCartItem({...props, quantity: quantityToAdd} );
     console.log(quantityToAdd);
+    
     setFinish(true);
     setQuantity(quantityToAdd);
+    isInCart(idItem);
   }
 
 //   const linkToCart = ({ isVisible}) => {
@@ -48,6 +67,11 @@ function ItemDetail(props) {
 //     }
 //     return null
 //   }
+
+
+console.log("finishState : ",finishState);
+console.log("productInCart : ",productInCart);
+
   return (
         <Container style={{margin:'0', padding:'0', marginLeft:'15%' }}>
             <Card  border="secondary" style={{  color: 'rgb(145,145,145)', marginBottom:'20px', marginLeft:'20px' }} bg="dark" >
@@ -85,11 +109,11 @@ function ItemDetail(props) {
                             </Row>
                             <Row>
                                 <Card.Body>
-                                    <ItemCount addON={OnAdd} stock={props.stock} initial={props.initial}></ItemCount>
+                                    {(!finishState) &&<ItemCount addON={OnAdd} stock={props.stock} initial={props.initial}></ItemCount>}
                                 </Card.Body>
                                 <Card.Body>
-                                    {finishState && <Link className='link-to-cart' to={`/cart`}>Finalizar Compra!</Link>}
-                                    {/* <linkToCart isVisible={finishState} /> */}
+                                    {(finishState || productInCart) && <Link className='link-to-cart' to={`/cart`}>Finalizar Compra!</Link>}
+                                   
                                 </Card.Body>
                             </Row>
                     </Col>
