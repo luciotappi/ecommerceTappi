@@ -1,3 +1,6 @@
+import {db} from '../api/APIFirebase'
+import { collection, getDocs,query,where,doc,getDoc } from 'firebase/firestore'
+
 export const Categories =[
 
   {
@@ -207,7 +210,8 @@ export const Data =[
         
         
       ]
-  
+
+
       export const searchCategories = () => 
           {
             return new Promise((res,rej)=>
@@ -228,35 +232,7 @@ export const Data =[
             })
           } 
 
-      // export const getItem= (Item) => {
-      // // const getItem = function (Item){
-
-      //   return new Promise((res,rej)=>
-      //   {
-
-      //     let condition = true
-      //     if (condition){
-      //       setTimeout(()=>{
-      //       if (Item != null)  
-      //       {
-      //         console.log("EL RESLTADO DE LA BUSQUEDA ES : ")
-      //         console.log(Data[Item]);
-      //         res(Data[Item])
-
-      //       }else
-      //       {
-      //         res(Data)
-
-      //       }
-      //         },2000);
-      //       }
-      //       else{
-
-      //           rej(console.log("No hay datos"))
-      //       }
-      //     })
-      //     }
-      
+    
 
           export const getItemByCategory= (categoryId) => {
             // const getItem = function (Item){
@@ -308,3 +284,191 @@ export const Data =[
   
       // export default getFetch;
       //  export default getItem;
+
+      export function searchCategoriesFirebase () {
+
+        // TODO: Realizar un refactor utilizando Async/Await en lugar de Promise.then
+    
+        return new Promise( (resolve, reject) => {
+            // creo la referencia a la coleccion que quiero traer
+            const colRef = collection(db,'Categories');
+          
+              getDocs(colRef).then((snapshot) => {
+                console.log('>> snapshot.docs: ', snapshot.docs);
+    
+    
+                const categoriasFB = snapshot.docs.map((rawDoc) => {
+                    return {
+                        id: rawDoc.id,
+                        ...rawDoc.data()
+                    }
+    
+                });
+           
+           
+    
+                console.log('>> Categorias Firebase:', categoriasFB);
+                resolve(categoriasFB);
+    
+            }, (error) => {
+                reject('>> Error al intentar traer los docs: ', error);
+            });
+           
+        });
+    
+    
+    }         
+
+      export function getProductsData (categoryId) {
+
+        // TODO: Realizar un refactor utilizando Async/Await en lugar de Promise.then
+    
+        return new Promise( (resolve, reject) => {
+            // creo la referencia a la coleccion que quiero traer
+            const colRef = collection(db,'productos');
+            if (categoryId ==null )
+            {
+              getDocs(colRef).then((snapshot) => {
+                console.log('>> snapshot.docs: ', snapshot.docs);
+    
+    
+                const productosConFormato = snapshot.docs.map((rawDoc) => {
+                    return {
+                        id: rawDoc.id,
+                        ...rawDoc.data()
+                    }
+    
+                });
+           
+           
+    
+                console.log('>> Productos:', productosConFormato);
+                resolve(productosConFormato);
+    
+            }, (error) => {
+                reject('>> Error al intentar traer los docs: ', error);
+            });
+          } else
+          {
+            const q = query(collection(db,'productos'),where("categoryName","==",categoryId));
+            getDocs(q).then((snapshot)=>{
+              
+              console.log('>> snapshot.docs: ', snapshot.docs);
+    
+    
+                const productosConFormato = snapshot.docs.map((rawDoc) => {
+                    return {
+                        id: rawDoc.id,
+                        ...rawDoc.data()
+                    }
+    
+                });
+           
+           
+    
+                console.log('>> Productos:', productosConFormato);
+                resolve(productosConFormato);
+    
+            }, (error) => {
+                reject('>> Error al intentar traer los docs: ', error);
+            
+            })
+          }
+        });
+    }
+
+  //   export function getItemFirebase (itemId) {
+
+  //     // TODO: Realizar un refactor utilizando Async/Await en lugar de Promise.then
+  
+  //     return new Promise( (resolve, reject) => {
+  //         // creo la referencia a la coleccion que quiero traer
+  //         const colRef = collection(db,'productos');
+  //         if (itemId ==null )
+  //         {
+  //           console.log("<>><<><><>ITEM ID ES NULO!!!: ", itemId);
+  //           getDocs(colRef).then((snapshot) => {
+  //             console.log('>> snapshot.docs: ', snapshot.docs);
+  
+  
+  //             const productosConFormato = snapshot.docs.map((rawDoc) => {
+  //                 return {
+  //                     id: rawDoc.id,
+  //                     ...rawDoc.data()
+  //                 }
+  
+  //             });
+         
+         
+  
+  //             console.log('>> Productos:', productosConFormato);
+  //             resolve(productosConFormato);
+  
+  //         }, (error) => {
+  //             reject('>> Error al intentar traer los docs: ', error);
+  //         });
+  //       } else
+  //       {
+  //         console.log("El item que estoy buscando es > :", itemId);
+  //         // const q = query(collection(db,'productos'),where("id","==","R1otHYgyXa3VdhA3Gwad"));  
+  //         // probar con db.collection('books').doc('fK3ddutEpD2qQqRMXNW5').get()
+  //         const ItemRef = doc(db,'productos','st0hZfF9BPst4ZyhSVPo');
+
+  //         getDoc(ItemRef).then((snapshot)=>{
+            
+  //           console.log('>> snapshot.docs: ', snapshot.docs);
+  
+  
+  //             const productosConFormato = snapshot.docs.map((rawDoc) => {
+  //                 return {
+  //                     id: rawDoc.id,
+  //                     ...rawDoc.data()
+  //                 }
+  
+  //             });
+         
+         
+  //             console.log({id: snapshot.id, ...snapshot.data()});
+  //             console.log('>> Productos:', productosConFormato);
+  //             resolve(productosConFormato);
+  
+  //         }, (error) => {
+  //             reject('>> Error al intentar traer los docs: ', error);
+          
+  //         });
+  //       }
+  //     });
+  
+  // }
+
+  export async function getItemFirebase (itemId) {
+
+    let response = [];
+    // creo la referencia a la coleccion que quiero traer
+   
+  const itemRef = doc(db, 'productos', itemId);
+
+    try {
+      const docSnap = await getDoc(itemRef);
+      if(docSnap.exists()) {
+          console.log(docSnap.data());
+          // response = docSnap.data.map((rawDoc) => {
+          //   return {
+          //   id: rawDoc.id,
+          //   ...rawDoc.data()
+          //   }
+          //   });
+
+          response = docSnap.data();
+
+          
+      } else {
+          console.log("Document does not exist")
+      }
+  
+  } catch(error) {
+      console.log(error)
+  }
+
+  return response;
+}

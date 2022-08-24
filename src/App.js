@@ -17,7 +17,7 @@ import About from './pages/About';
 
 //routes
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import {searchCategories } from './Data/Data';
+import {searchCategories, searchCategoriesFirebase } from './Data/Data';
 //
 
 import {Data} from './Data/Data';
@@ -47,7 +47,15 @@ function App() {
     .catch(err=>console.log(err))
     // .finally(()=>setLoading(false))
   },[categories])
+
   
+  // useEffect(()=>{
+  //   // getFetch
+  //   searchCategoriesFirebase()
+  //   .then((resp)=>setCategories(resp))
+  //   .catch(err=>console.log(err))
+  //   // .finally(()=>setLoading(false))
+  // },[categories])
   console.log("LAS CATEGORIAS SON : " + categories);
   console.log(categories.length);
 

@@ -59,7 +59,7 @@ import CartWidget from '../CartWidget/CartWidget';
             
               {/* {props.categories.map(u => <Nav.Link  key={u.categoryId} href=" " onClick={goToCategory.bind(u.categoryId)} >{u.categoryName}</Nav.Link> )} */}
                {/* {props.categories.map(u => <li><Link to={routeCategory+ u.categoryId}>{u.categoryName}</Link></li> )} */}
-              {props.categories.map(u => <NavLink to={routeCategory+ u.categoryId} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
+              {props.categories.map(u => <NavLink to={routeCategory+ u.id} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
               {/* <NavDropdown title="Soluciones" id="collasible-nav-dropdown">
                 <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>Automatizacion</NavDropdown.Item>
                 <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>

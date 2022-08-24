@@ -4,7 +4,7 @@ import { useParams} from 'react-router-dom';
 
 import ItemDetail from "../ItemDetail";
 
-import {getItem} from '../../Data/Data';
+import {getItem, getItemFirebase, getProductsData} from '../../Data/Data';
 
 function ItemDetailContainer(props) {
 
@@ -14,12 +14,26 @@ function ItemDetailContainer(props) {
 
   useEffect(()=>{
 
-     getItem(idItem)
-    // getItem(0)
-    .then((resp)=>setData(resp))
-    .catch(err=>console.log(err))
-    .finally(()=>setLoading(false))
-  },[])
+    //  getItem(idItem)
+    // // getItem(0)
+    // .then((resp)=>setData(resp))
+    // .catch(err=>console.log(err))
+    // .finally(()=>setLoading(false))
+
+    // getItemFirebase(idItem)
+    // // getItem(0)
+    // .then((resp)=>setData(resp))
+    // .catch(err=>console.log(err))
+    // .finally(()=>setLoading(false))
+    setData([]);
+    async function getD () {
+      const data = await getItemFirebase(idItem);
+      setData(data);
+      setLoading(false);
+  }
+
+  getD ();
+  },[idItem])
 
   useEffect(() => {
     console.log('Recibi itemID y es : ',idItem);
@@ -28,10 +42,9 @@ function ItemDetailContainer(props) {
     }
   },[idItem]);
   
-  console.log(data);
   console.log(data.id);
   console.log(data.title);
-  console.log("LOS DATOS DEL DETALLE SON: "+ data);
+  console.log("LOS DATOS DEL DETALLE SON: ", data);
   console.log(data.length);
   console.log(data[0]); 
 

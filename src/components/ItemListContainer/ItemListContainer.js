@@ -3,7 +3,7 @@ import { useParams} from 'react-router-dom';
 
 import ItemList from "../ItemList";
 
-import {getItemByCategory} from '../../Data/Data';
+import {getItemByCategory,getProductsData} from '../../Data/Data';
 
 function ItemListContainer(props) {
 
@@ -14,7 +14,12 @@ function ItemListContainer(props) {
 
   useEffect(()=>{
     // getFetch
-    getItemByCategory(idCategory)
+    // getItemByCategory(idCategory)
+    // .then((resp)=>setData(resp))
+    // .catch(err=>console.log(err))
+    // .finally(()=>setLoading(false))
+
+    getProductsData(idCategory)
     .then((resp)=>setData(resp))
     .catch(err=>console.log(err))
     .finally(()=>setLoading(false))
@@ -55,7 +60,7 @@ function ItemListContainer(props) {
         </div>
         :
         <div>
-          <h1>LISTADO DE CATEGORIA : {data[0].categoryName}</h1>
+          {/* <h1>LISTADO DE CATEGORIA : {data[0].categoryName}</h1> */}
           {/* <h1>LISTADO DE CATEGORIA : {listTitle}</h1> */}
           <ItemList data={data}/>
          

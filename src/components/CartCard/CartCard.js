@@ -41,13 +41,15 @@ export default function CartCard(datos) {
                     
                     <Col className="colCartCard">    
                          <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> ${parseInt(datos.price.replace('$', ''))}</ListGroup.Item>
+                         {/* <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> ${parseInt(datos.price.replace('$', ''))}</ListGroup.Item> */}
+                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> ${datos.price}</ListGroup.Item>
                          </ListGroup>
                     </Col>
                
                     <Col className="colCartCard">    
                          <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> ${parseInt(datos.price.replace('$', '')*datos.quantity)}</ListGroup.Item>
+                         {/* <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> ${parseInt(datos.price.replace('$', '')*datos.quantity)}</ListGroup.Item> */}
+                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> ${datos.price*datos.quantity}</ListGroup.Item>
                          </ListGroup>
                     </Col>
 

@@ -33,7 +33,8 @@ export default function CartCustomContext({children})
             );
             setTotalPrice(
 
-                totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
+                // totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
+                totalPrice +producto.price*producto.quantity
             );
         } else
         {
@@ -45,7 +46,8 @@ export default function CartCustomContext({children})
             
             setTotalPrice(
 
-                totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
+                // totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
+                totalPrice + producto.price*producto.quantity
             );
            
             const listaActualizada = [...cart,producto]

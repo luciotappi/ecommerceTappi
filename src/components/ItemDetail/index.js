@@ -28,7 +28,6 @@ function ItemDetail(props) {
   const {idItem} = useParams();
 
  
-  
 //   useEffect(() => {
     
 //     console.log('>>La cantidad del carrito es : ',quantityItem);
@@ -38,18 +37,18 @@ function ItemDetail(props) {
 //   },[quantityItem]);
 
 
-    //    useEffect(() => {
-    //     isInCart(idItem);
-    //     if (productInCart==true){
-    //         setFinish(true);
-    //         console.log("ACA NO QUIERO ENTRAR");
-    //     }
-    //     return ()=> {
-    //         console.log("EL ITEM ESTABA EN CARRITO ? > ",productInCart)
+       useEffect(() => {
+        isInCart(idItem);
+        if (productInCart==true){
+            setFinish(true);
+            console.log("ACA NO QUIERO ENTRAR");
+        }
+        return ()=> {
+            console.log("EL ITEM ESTABA EN CARRITO ? > ",productInCart)
             
 
-    //     }
-    //    },[finishState])
+        }
+       },[finishState,productInCart])
 
   function OnAdd(quantityToAdd) {
     // addCartItem({id:props.id, quantity: quantityToAdd} );
@@ -109,7 +108,7 @@ console.log("productInCart : ",productInCart);
                             </Row>
                             <Row>
                                 <Card.Body>
-                                    {(!finishState) &&<ItemCount addON={OnAdd} stock={props.stock} initial={props.initial}></ItemCount>}
+                                    {(!finishState|| !productInCart) &&<ItemCount addON={OnAdd} stock={props.stock} initial={props.initial}></ItemCount>}
                                 </Card.Body>
                                 <Card.Body>
                                     {(finishState || productInCart) && <Link className='link-to-cart' to={`/cart`}>Finalizar Compra!</Link>}

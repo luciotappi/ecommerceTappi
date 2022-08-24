@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore";
+import { useEffect } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,26 +16,33 @@ const firebaseConfig = {
 };
 
 
+// useEffect(()=> {
 
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
- //seleccionar la db de firestore
- const db =getFirestore(app);
- const colRef =collection(db,'productos');
- getDocs(colRef).then((snapshot) => {
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+//seleccionar la db de firestore
+export const db =getFirestore(app);
+// const colRef =collection(db,'productos');
+// getDocs(colRef).then((snapshot) => {
+
+//   console.log('>>snapshot.docs: ',snapshot.data);
+//   const productosConFormato =snapshot.docs.map((rawDoc) =>{
+
+//     return {
+
+//       id:rawDoc.id,
+//       ...rawDoc.data()
+
+//     }
+//   });
+
+//   console.log('>> Productos:', productosConFormato); 
+// }, (error) => {
+//    console.log('>>error al intentar traer los docs> ',err);
+// });
+
+// console.log(colRef);
+// },[]);
+
+
  
-   console.log('>>snapshot.docs: ',snapshot.data);
-   const productosConFormato =snapshot.docs.map((rawDoc) =>{
-
-     return {
-
-       id:rawDoc.id,
-       ...rawDoc.data()
-
-     }
-   });
- }, (error) => {
- 
- });
- 
- console.log(colRef);
