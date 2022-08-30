@@ -56,7 +56,7 @@ export default function CartCard(datos) {
                     <Col className="colCartCard">
                             <Row>
                                 <Card.Body>
-                                    <Button variant="danger" onClick={() => removeItem(datos.id)}>Eliminar</Button>
+                                    <Button variant="danger" onClick={() => removeItem(datos.idProd)}>Eliminar</Button>
                                 </Card.Body>
                             </Row>
                             

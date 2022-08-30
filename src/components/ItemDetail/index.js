@@ -51,10 +51,11 @@ function ItemDetail(props) {
        },[finishState,productInCart])
 
   function OnAdd(quantityToAdd) {
-    // addCartItem({id:props.id, quantity: quantityToAdd} );
-    addCartItem({...props, quantity: quantityToAdd} );
-    console.log(quantityToAdd);
     
+    // addCartItem({id:props.id, quantity: quantityToAdd} );
+    addCartItem({...props, quantity: quantityToAdd, idProd :idItem} );
+    console.log(quantityToAdd);
+
     setFinish(true);
     setQuantity(quantityToAdd);
     isInCart(idItem);

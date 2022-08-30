@@ -23,7 +23,7 @@ import HomeIcon from '@mui/icons-material/Home';
 export default function Cart() {
 
     // const {cartData}= useContext(CartContext);
-     const {cartData,removeAll,cartQuantity,totalPrice}= useContext(CartContext);
+     const {cartData,removeAll,cartQuantity,totalPrice,createOrder}= useContext(CartContext);
      
     console.log('>>cartData : ',cartData)
 
@@ -101,6 +101,11 @@ export default function Cart() {
         {cartQuantity!=0 &&
           <div>
             <h4 style= {{color:"white"}}>Precio Total (ARS$) : ${totalPrice}</h4>
+            <Button variant ="success" onClick={() => createOrder()}>Confirmar compra!</Button>
+            <br>
+            </br>
+            <br>
+            </br>
             <Button variant="danger" onClick={() => removeAll()}>Vaciar carrito</Button>
           </div>}
 

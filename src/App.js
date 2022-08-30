@@ -40,22 +40,23 @@ function App() {
   const[categories,setCategories] = useState([])
   const[loading,setLoading]=useState(true)
 
-  useEffect(()=>{
-    // getFetch
-    searchCategories()
-    .then((resp)=>setCategories(resp))
-    .catch(err=>console.log(err))
-    // .finally(()=>setLoading(false))
-  },[categories])
-
-  
   // useEffect(()=>{
   //   // getFetch
-  //   searchCategoriesFirebase()
+  //   searchCategories()
   //   .then((resp)=>setCategories(resp))
   //   .catch(err=>console.log(err))
   //   // .finally(()=>setLoading(false))
   // },[categories])
+
+  
+  useEffect(()=>{
+    // getFetch
+    searchCategoriesFirebase()
+    .then((resp)=>setCategories(resp))
+    .catch(err=>console.log(err))
+    // .finally(()=>setLoading(false))
+  },[])
+
   console.log("LAS CATEGORIAS SON : " + categories);
   console.log(categories.length);
 
