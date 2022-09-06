@@ -1,30 +1,33 @@
 //imports de reacts
 import { useEffect, useState } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 
 import ItemDetail from "../ItemDetail";
 
 import {getItem, getItemFirebase, getProductsData} from '../../Data/Data';
+
+
+//imports de materialize UI
+
+import ErrorIcon from '@mui/icons-material/Error';
+import HomeIcon from '@mui/icons-material/Home';
+//imports de react-bootstrap
+
+import Button from 'react-bootstrap/Button';
 
 function ItemDetailContainer(props) {
 
   const[data,setData] = useState([])
   const[loading,setLoading]=useState(true)
   const {idItem} = useParams();
+  
+  const navigateFn = useNavigate();
+
+  const goToHome = () => {
+      navigateFn('/');
+  }
 
   useEffect(()=>{
-
-    //  getItem(idItem)
-    // // getItem(0)
-    // .then((resp)=>setData(resp))
-    // .catch(err=>console.log(err))
-    // .finally(()=>setLoading(false))
-
-    // getItemFirebase(idItem)
-    // // getItem(0)
-    // .then((resp)=>setData(resp))
-    // .catch(err=>console.log(err))
-    // .finally(()=>setLoading(false))
     setData([]);
     async function getD () {
       const data = await getItemFirebase(idItem);
@@ -48,6 +51,15 @@ function ItemDetailContainer(props) {
   console.log(data.length);
   console.log(data[0]); 
 
+  // La variable validItem controla si el id ingresado por ruta existe o no.
+  let validItem = false;
+  //Si el resultado de getItemFirebase(idItem) devuelve un array vacio entonces validItem se vuelve falso. 
+  if (data.length != 0){
+    validItem =true;
+  }
+  else {
+    validItem=false;
+  }
 
   return (
     
@@ -60,8 +72,12 @@ function ItemDetailContainer(props) {
         </div>
         :
         <div>
-          <ItemDetail {...data}/>
-
+         {validItem && <ItemDetail {...data}/>}
+         {!validItem && <div>
+          <ErrorIcon color="info"></ErrorIcon>
+              <h4 style= {{color:"white"}}>El producto con id {idItem} no existe</h4>
+              <Button variant="primary"  onClick={() => goToHome()} ><HomeIcon/>Volver al Inicio</Button>
+          </div>}
         </div>   
   
   );

@@ -80,7 +80,7 @@ export default function CartCustomContext({children})
 
         setTotalPrice(
 
-            totalPrice - parseInt(prodToRemove[0].price.replace('$', '')*prodToRemove[0].quantity)
+            totalPrice - parseInt(prodToRemove[0].price*prodToRemove[0].quantity)
         );
 
         
@@ -114,7 +114,7 @@ export default function CartCustomContext({children})
     }
 
 
-    const createOrder = () => {
+    const createOrder = (userData) => {
 
         var currentTimeInMilliseconds=Date.now(); // unix timestamp in milliseconds
         var timeStampUTC = Math.floor(currentTimeInMilliseconds/1000);
@@ -128,9 +128,9 @@ export default function CartCustomContext({children})
 
         let order = {
             buyer: {
-                name: "Lucio Tappi",
-                phone:"123456789",
-                email:"test.email@gmail.com"
+                name: userData.name,
+                phone:userData.phone,
+                email:userData.email
             },
             items:itemsForDB,
             date:serverTimestamp(),

@@ -1,48 +1,55 @@
+import { React} from 'react';
 //imports de react-router-dom
-
 import {useNavigate} from 'react-router-dom';
 
+// react-bootstrap imports
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-import ItemCount from "../ItemCount";
-
-
-import {cartContext} from '../../App';
-import { React,useContext } from 'react';
-
+// css imports
 import './Item.css';
 
 function Item(props) {
 
- 
-  console.log("El titulo es : " + props.stock );
-  console.log("La imagen es : " + props.image);
-
   const navigateFn = useNavigate();
 
   const goToItem = () => {
-      
-   
+    
       navigateFn(`/item/${props.id}`);
+
   }
 
-    // const {productos} =useContext({cartContext});
-  // const valuesDelContext = useContext({cartContext});
-  // console.log("Values del context >>>>", productos);
   return (
     <Card
       border="secondary"
-      style={{ width: "18rem", color: "rgb(145,145,145)", margin: "5%" }}
+      style={{ width: "18rem", color: "rgb(145,145,145)", margin: "15%" }}
       bg="dark"
       onClick={goToItem.bind(this)}
       className="itemHover"
     >
-      <Card.Img variant="top" src={props.image} />
+      <Card.Img 
+      variant="top" 
+      src={props.image} 
+      style = {{
+        // float: 'top',
+        width:  '100%',
+        // objectFit: 'cover',
+        height: '20vh',
+        }}
+      />
 
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Text>{props.description}</Card.Text>
+        <Card.Title className="cardTitle"
+        style = {{
+          fontSize: '1.2rem',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          transition: 'max-height 0.15s ease-out',
+          
+        }}
+        >{props.title}</Card.Title>
+        {/* <Card.Text>{props.description}</Card.Text> */}
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item
@@ -53,7 +60,7 @@ function Item(props) {
             fontSize: "1.5rem",
           }}
         >
-          {" "}
+          {"$"}
           {props.price}
         </ListGroup.Item>
       </ListGroup>
@@ -65,7 +72,7 @@ function Item(props) {
           onClick={goToItem.bind(this)}
         >
           Mas informacion
-        </Card.Link>
+        </Card.Link>  
       </Card.Body>
       {/* <Card.Body>
         <ItemCount stock={props.stock} initial={props.initial} ></ItemCount>

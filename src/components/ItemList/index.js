@@ -1,34 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
 
-
+//react-bootstrap components
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+//componens imports
 import Item from "../Item";
 
+//css files
 import './ItemList.css'
-
-// import { CartContext } from '../../App';
-// import {CartContext} from  '../../context/CartContext';
 
 function ItemList(data) {
 
-// useContext(CartContext);   
-// console.log('>>>>Productos desde el context : ',CartContext.value);
-
-console.log("ACA ENTRE");
-console.log(data.data.length);
-console.log("Los datos son en ItemList son : " + data)
-console.log(data.length);
     return (
         
-  <Row xs={1} md={6} className="g-4 h-100 d-flex">
+  <Row  className="g-4 h-100 d-flex">
     {
        
        
     Array.from({ length: data.data.length }).map((_, idx) => (
         
-      <Col key={data.data[idx].id} style={{height:'100vh'}}>
+      <Col lg={true} key={data.data[idx].id}>
 
       <Item  id={data.data[idx].id} title={data.data[idx].title} description={data.data[idx].description} price={data.data[idx].price} info={data.data[idx].info} stock={data.data[idx].stock} initial={data.data[idx].initial} image={data.data[idx].image} ></Item>
         

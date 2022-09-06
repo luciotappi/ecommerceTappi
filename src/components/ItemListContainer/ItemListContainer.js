@@ -13,18 +13,14 @@ function ItemListContainer(props) {
 
 
   useEffect(()=>{
-    // getFetch
-    // getItemByCategory(idCategory)
-    // .then((resp)=>setData(resp))
-    // .catch(err=>console.log(err))
-    // .finally(()=>setLoading(false))
-
+    
     getProductsData(idCategory)
     .then((resp)=>setData(resp))
     .catch(err=>console.log(err))
     .finally(()=>setLoading(false))
 
     // Vuelvo a dejar el loading en true para mostar el loading ante una nueva recarda o navegación
+
     return () => {
       setLoading(true);
     }
@@ -59,7 +55,11 @@ function ItemListContainer(props) {
         <div class="loader-wheel"></div>
         </div>
         :
-        <div>
+        <div className="d-flex align-items-center" style={{
+         
+          width:'75%',
+          margin:'auto'
+        }}>
           {/* <h1>LISTADO DE CATEGORIA : {data[0].categoryName}</h1> */}
           {/* <h1>LISTADO DE CATEGORIA : {listTitle}</h1> */}
           <ItemList data={data}/>
