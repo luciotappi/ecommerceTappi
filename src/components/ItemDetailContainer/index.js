@@ -65,21 +65,20 @@ function ItemDetailContainer(props) {
     
        loading ? 
         <div className="loading">
-          {/* <h2 style={{heigh:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2> */}
-        <h2 style={{heightMin:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
-        {/* <img src={"../images/WMDx.gif"}></img> */}
-        <div class="loader-wheel"></div>
+          <h2 style={{heightMin:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
+          <div class="loader-wheel"></div>
         </div>
         :
         <div>
          {validItem && <ItemDetail {...data}/>}
-         {!validItem && <div>
-          <ErrorIcon color="info"></ErrorIcon>
-              <h4 style= {{color:"white"}}>El producto con id {idItem} no existe</h4>
-              <Button variant="primary"  onClick={() => goToHome()} ><HomeIcon/>Volver al Inicio</Button>
+         {!validItem && 
+         
+          <div style={{height:'60vh',display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column'}}>
+            <ErrorIcon color="info"></ErrorIcon>
+            <h6 style= {{color:"white"}}>El producto con id {idItem} no existe</h6>
+            <Button variant="primary"  onClick={() => goToHome()} ><HomeIcon/>Volver al Inicio</Button>
           </div>}
         </div>   
-  
   );
 
 }

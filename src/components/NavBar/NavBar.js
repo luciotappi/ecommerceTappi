@@ -43,25 +43,11 @@ import CartWidget from '../CartWidget/CartWidget';
             
               {/* {props.categories.map(u => <Nav.Link  key={u.categoryId} href=" " onClick={goToCategory.bind(u.categoryId)} >{u.categoryName}</Nav.Link> )} */}
                {/* {props.categories.map(u => <li><Link to={routeCategory+ u.categoryId}>{u.categoryName}</Link></li> )} */}
-              {props.categories.map(u => <NavLink to={routeCategory+ u.id} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
-              {/* <NavDropdown title="Soluciones" id="collasible-nav-dropdown">
-                <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>Automatizacion</NavDropdown.Item>
-                <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>
-                  IOT
-                </NavDropdown.Item>
-                <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>
-                  Industria
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href=" " onClick={goToCategory4.bind(this)}>
-                  Personaliza tu solucion
-                </NavDropdown.Item>
-              </NavDropdown> */}
+              {/* {props.categories.map(u => <NavLink to={routeCategory+ u.id} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )} */}
+              {props.categories.map(u => <NavLink to={routeCategory+ u.key} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
+              
             </Nav>
 
-            
-           
-           
             <Nav>
               <CartWidget/>
              <div style={{marginLeft:"20px"}}>

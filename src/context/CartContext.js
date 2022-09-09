@@ -10,6 +10,13 @@ export default function CartCustomContext({children})
 {
 
     const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState(() => {
+    //     // getting stored value
+    //     const saved = localStorage.getItem("name");
+    //     const initialValue = JSON.parse(saved);
+    //     return initialValue || "";
+    //   });
+
     const [cartQuantity,setCartQuantity]=useState(0);
     const [totalPrice,setTotalPrice]=useState(0);
     const [productinCart,setProductInCart]=useState(false);
@@ -28,15 +35,23 @@ export default function CartCustomContext({children})
                 }
             });
             setCart(newCart);
+            // localStorage.setCart('cart',JSON.stringify(newCart));
+
             setCartQuantity(
 
                 cartQuantity + producto.quantity
             );
+
+            // localStorage.setCartQuantity('cartQuantity',JSON.stringify(cartQuantity + producto.quantity));
+
             setTotalPrice(
 
                 // totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
                 totalPrice +producto.price*producto.quantity
             );
+
+            // localStorage.setTotalPrice('totalPrice',JSON.stringify(totalPrice +producto.price*producto.quantity));
+
         } else
         {
             
@@ -45,14 +60,20 @@ export default function CartCustomContext({children})
                 cartQuantity + producto.quantity
             );
             
+            // localStorage.setCartQuantity('cartQuantity',JSON.stringify(cartQuantity + producto.quantity));
+
             setTotalPrice(
 
                 // totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
                 totalPrice + producto.price*producto.quantity
             );
            
+            // localStorage.setTotalPrice('totalPrice',JSON.stringify(totalPrice +producto.price*producto.quantity));
+
             const listaActualizada = [...cart,producto]
             setCart(listaActualizada);
+            // localStorage.setCart('cart',JSON.stringify(listaActualizada));
+
             console.log(' >> Elementos del carrito actual<<', listaActualizada);
             
             
@@ -134,6 +155,7 @@ export default function CartCustomContext({children})
             },
             items:itemsForDB,
             date:serverTimestamp(),
+            status:'generada',
             total:totalPrice
         }
         console.log(cart);

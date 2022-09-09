@@ -86,13 +86,19 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
             });
           } else
           {
-            const q = query(collection(db,'products4'),where("categoryName","==",categoryId));
-            getDocs(q).then((snapshot)=>{
+            
+            
+            // Genero query de la cateogia cuyo key coincida con el nombre ingreasdo en la ruta. 
+            // El codigo se genera aqui para responder a  posibles ingresos tanto desde el Navbar como desde la ruta del navegador
+            const qCategories = query(collection(db,'Categories'),where("key","==",categoryId));
+            getDocs(qCategories)
+            getDocs(qCategories).then((snapshot)=>{
+              
               
               console.log('>> snapshot.docs: ', snapshot.docs);
     
     
-                const products4ConFormato = snapshot.docs.map((rawDoc) => {
+                const categoriesConFormato = snapshot.docs.map((rawDoc) => {
                     return {
                         id: rawDoc.id,
                         ...rawDoc.data()
@@ -100,16 +106,95 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
     
                 });
            
+           ////
+
+           console.log("Query de categorias:", categoriesConFormato);
+           console.log(categoriesConFormato.length);
+
+
+           //logica de control si no existe la categoria ingresada por ruta de navegador
            
-    
-                console.log('>> products4:', products4ConFormato);
-                resolve(products4ConFormato);
-    
-            }, (error) => {
-                reject('>> Error al intentar traer los docs: ', error);
-            
-            })
-          }
+           if (categoriesConFormato.length ==0) {
+
+            console.log("NO EXISTE LA CATEGORIA!");  
+            const products4ConFormato = snapshot.docs.map((rawDoc) => {
+              return {
+                  id: rawDoc.id,
+                  ...rawDoc.data()
+              }
+
+          });
+            console.log('>> products4:', products4ConFormato);
+            resolve(products4ConFormato);
+
+
+           }
+
+           else {
+                // Una vez encontado el id de la categoria, paso a buscar los produtos cuya categoria coincide con el key.
+
+                const q = query(collection(db,'products4'),where("categoryName","==",categoriesConFormato[0].id));
+                getDocs(q).then((snapshot)=>{
+                  
+                  console.log('>> snapshot.docs: ', snapshot.docs);
+
+
+                    const products4ConFormato = snapshot.docs.map((rawDoc) => {
+                        return {
+                            id: rawDoc.id,
+                            ...rawDoc.data()
+                        }
+
+                    });
+
+                    console.log('>> products4:', products4ConFormato);
+                    resolve(products4ConFormato);
+
+                }, (error) => {
+                    reject('>> Error al intentar traer los docs: ', error);
+
+                })
+
+                ////
+
+                    // console.log('>> products4:', products4ConFormato);
+                    // resolve(products4ConFormato);
+              }
+
+
+                }, (error) => {
+                    reject('>> Error al intentar traer los docs: ', error);
+                
+                })
+
+
+
+                // const q = query(collection(db,'products4'),where("categoryName","==",categoryId));
+                // getDocs(q).then((snapshot)=>{
+                  
+                //   console.log('>> snapshot.docs: ', snapshot.docs);
+
+
+                //     const products4ConFormato = snapshot.docs.map((rawDoc) => {
+                //         return {
+                //             id: rawDoc.id,
+                //             ...rawDoc.data()
+                //         }
+
+                //     });
+
+                //     console.log('>> products4:', products4ConFormato);
+                //     resolve(products4ConFormato);
+
+                // }, (error) => {
+                //     reject('>> Error al intentar traer los docs: ', error);
+                
+                // })
+                
+                            
+                          }
+
+           
         });
     }
 

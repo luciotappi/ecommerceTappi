@@ -47,6 +47,14 @@ function ItemListContainer(props) {
   //   listTitle = "NUESTROS PRODUCTOS:"
   // }
 
+  let validData=false;
+  if (data.length==0)
+  {
+    validData= false;
+  }
+  else{
+    validData=true;
+  }
   return (
     
        loading ? 
@@ -62,8 +70,9 @@ function ItemListContainer(props) {
         }}>
           {/* <h1>LISTADO DE CATEGORIA : {data[0].categoryName}</h1> */}
           {/* <h1>LISTADO DE CATEGORIA : {listTitle}</h1> */}
-          <ItemList data={data}/>
-         
+          {validData && <ItemList data={data}/>}
+          {!validData &&
+          <h2>La categoria ingresada no existe!</h2>}
         </div>
       
     
