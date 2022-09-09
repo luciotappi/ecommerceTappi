@@ -106,22 +106,7 @@ export default function Footer(){
                   
 
                   <img src="../images/Tappi-logo.png" style = {{width:'30%',height: 'auto'}}/>
-                  {/* <h5 class="text-uppercase">Enlaces Utiles</h5>
-                    
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#!" class="text-white">Sobre nosotros</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Preguntas frecuentes</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Garantia y devolucion</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Contacte con nosotros</a>
-                    </li>
-                  </ul> */}
+                  
                 </div>
                 {/* <!--Grid column--> */}
         

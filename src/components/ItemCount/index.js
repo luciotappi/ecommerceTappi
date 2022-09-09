@@ -1,47 +1,24 @@
+//react imports
 import { useState , useEffect} from "react";
 
-
- 
-// Own CSS 
+//css imports
 
 import './btnAddCart.css'
 import './btnQty.css'
 import './lblQuantity.css'
 import './lblStockQuantity.css'
+
 // main function 
 
 function ItemCount({stock, initial, addON}) {
 
 
-    console.log("El stock es de " + stock + " unidades");
-    console.log("El valor inicial es de " + initial);
-
     //check stock and handle AddCart btn 
-
     // use states 
 
     const [quantity,setQuantity] = useState(parseInt(initial));
 
-   
     const stockAvailable = stock >= 1 ? true : false;
-    console.log(stockAvailable);
-    console.log(!stockAvailable);
-    // use effects
-
-
-    // useEffect(() => {
-    //     console.log('%c    Renderizado Siempre', 'color: #38761d');
-    //     return () => {
-    //         console.log('Contador listo para ser cleanup!');
-    //     }        
-    // });
-
-    // useEffect(() => {
-    //     console.log('%c    >>>>> Renderizado Contador', 'color: #00761d');
-    //     return () => {
-    //         console.log('Contador listo para ser cleanup!');
-    //     }
-    // }, [quantity]);
 
     useEffect(() => {
     const btnAddCart =document.getElementsByClassName('btnAddCart');
@@ -72,29 +49,13 @@ function ItemCount({stock, initial, addON}) {
         {
           console.log('la cantidad maxima no puede superar el stock. STOCK = ' + stock);       
         } else{
-            // setQuantity(
-                 
-            //     quantity++
-                
-            // );
+            
             setQuantity(quantity +1);
             
         }
         
     };
 
-
-
-
-    // function addON(){
-
-    //     if (!stockAvailable){
-    //         console.log("No hay stock del produto seleccionado.");
-    //     } else {
-    //         console.log(quantity);  
-    //     }
-    // };
-    
     console.log(quantity);
     return (
 

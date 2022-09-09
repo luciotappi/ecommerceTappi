@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+//react imports
+import React, { useContext, useState } from "react";
 import {CartContext} from '../../context/CartContext'
 import { useNavigate } from "react-router-dom";
  
@@ -29,9 +30,6 @@ export default function Cart() {
   
     const {cartData,removeAll,cartQuantity,totalPrice,createOrder}= useContext(CartContext);
      
-    console.log('>>cartData : ',cartData)
-
-
     const navigateFn = useNavigate();
 
     const goToHome = () => {
@@ -39,14 +37,6 @@ export default function Cart() {
     }
     
     let isQuantity = false;
-
-    // const [value,setValue] = useState(),
-    // onInput =({target: {value}}) =>setValue(value),
-    // onFormSubmit = e => {
-    //   e.preventDefault()
-    //   console.log(value)
-    //   setValue()
-    // }
 
     const [value,setValue] = useState({
       name:"",
@@ -117,10 +107,7 @@ export default function Cart() {
     
     return(
       <>
-      <div className="Container" style={{
-
-        
-      }}>
+      <div className="Container">
         <div className="CartListContainer">
         <CartHeader/>
             {
@@ -135,25 +122,20 @@ export default function Cart() {
           <div className="CartSummaryContainer">
             {cartQuantity!=0 &&
               <div> 
-                {/* <h4 style= {{color:"white"}}>Precio Total (ARS$) : ${totalPrice}</h4>
-                <Button variant ="success" onClick={() => createOrder()}>Confirmar compra!</Button>
-                <br>
-                </br>
-                <br>
-                </br> */}
-               
+              
                 <Card border="light" style={{ width: '18rem' }}>
                   <Card.Header>Resumen de compra</Card.Header>
                   <Card.Body>
                     <ListGroup variant="flush">
+
                       <ListGroup.Item className="text-start">Subtotal: ${totalPrice}</ListGroup.Item>
                       <ListGroup.Item className="text-start">Envio: $0</ListGroup.Item>
                       <ListGroup.Item className="text-start">Descuentos: $0</ListGroup.Item>
                       <Card.Title>Precio Total: ${totalPrice}</Card.Title>
-                      
+  
                     </ListGroup>
-                      {/* <Button variant="danger" onClick={() =>  removeAll()}>Vaciar carrito</Button> */}
-                <Button variant="danger" onClick={() =>  { if (window.confirm('Esta seguro que quiere vaciar el carrito?')) removeAll() } }>Vaciar carrito</Button>
+                     
+                    <Button variant="danger" onClick={() =>  { if (window.confirm('Esta seguro que quiere vaciar el carrito?')) removeAll() } }>Vaciar carrito</Button>
                  
                   </Card.Body> 
                  
@@ -162,66 +144,62 @@ export default function Cart() {
                   
                   
                   <Form onSubmit={onFormSubmit}>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Text id="buyerName">
-                      <PersonIcon/>
-                    </InputGroup.Text>
-                    <Form.Control
-                      placeholder="Nombre y apellido"
-                      aria-label="buyerName"
-                      aria-describedby="basic-addon1"
-                      type="text"   
-                      onChange={onInputName} 
-                    />
-                  </InputGroup>
+                    <InputGroup className="mb-3">
+                      <InputGroup.Text id="buyerName">
+                        <PersonIcon/>
+                      </InputGroup.Text>
+                      <Form.Control
+                        placeholder="Nombre y apellido"
+                        aria-label="buyerName"
+                        aria-describedby="basic-addon1"
+                        type="text"   
+                        value={value.name}
+                        onChange={onInputName} 
+                      />
+                    </InputGroup>
 
-                  <InputGroup className="mb-3">
-                  <InputGroup.Text id="buyerPhone">
-                      <LocalPhoneIcon/>
-                  </InputGroup.Text>
-                    <Form.Control
-                      placeholder="Telefono"
-                      aria-label="buyerPhone"
-                      aria-describedby="basic-addon1"
-                      onChange={onInputPhone}
-                    />
-                  </InputGroup>
+                    <InputGroup className="mb-3">
+                      <InputGroup.Text id="buyerPhone">
+                          <LocalPhoneIcon/>
+                      </InputGroup.Text>
+                        <Form.Control
+                          placeholder="Telefono"
+                          aria-label="buyerPhone"
+                          aria-describedby="basic-addon1"
+                          onChange={onInputPhone}
+                        />
+                    </InputGroup>
 
-                  <InputGroup className="mb-3">
-                  <InputGroup.Text id="buyerEmail">
-                      <EmailIcon/>
-                  </InputGroup.Text>
-                  <Form.Control
-                      placeholder="Email"
-                      aria-label="buyerEmail"
-                      aria-describedby="basic-addon1"
-                      type="email"
-                      onChange={onInputEmail} 
-                    />
-                  </InputGroup>
+                    <InputGroup className="mb-3">
+                      <InputGroup.Text id="buyerEmail">
+                          <EmailIcon/>
+                      </InputGroup.Text>
+                      <Form.Control
+                          placeholder="Email"
+                          aria-label="buyerEmail"
+                          aria-describedby="basic-addon1"
+                          type="email"
+                          onChange={onInputEmail} 
+                        />
+                    </InputGroup>
 
-                  <InputGroup className="mb-3">
-                  <InputGroup.Text id="buyerEmailConfirm">
-                      <MarkEmailReadIcon/>
-                    </InputGroup.Text>
-                  <Form.Control
-                      placeholder=" Confirmar Email"
-                      aria-label="buyerEmailConfirm"
-                      aria-describedby="basic-addon1"
-                      type="email"
-                      onChange={onInputEmailConfirm} 
-                    />
+                    <InputGroup className="mb-3">
+                      <InputGroup.Text id="buyerEmailConfirm">
+                          <MarkEmailReadIcon/>
+                        </InputGroup.Text>
+                      <Form.Control
+                          placeholder=" Confirmar Email"
+                          aria-label="buyerEmailConfirm"
+                          aria-describedby="basic-addon1"
+                          type="email"
+                          onChange={onInputEmailConfirm} 
+                        />
 
-                  </InputGroup>
-                
-
-                    {/* <Button variant ="success" onClick={() => createOrder()}>Confirmar compra!</Button> */}
-                    <Button variant ="success" type="submit">Confirmar compra!</Button>
-                    
+                    </InputGroup>
+            
+                      <Button variant ="success" type="submit">Confirmar compra!</Button>
+                      
                   </Form>
-                
-                  
-                  
                   
                 </Card>
               </div>}

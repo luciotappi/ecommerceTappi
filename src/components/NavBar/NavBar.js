@@ -1,5 +1,5 @@
 //imports de react
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // imports de navbar
 import Container from 'react-bootstrap/Container';
@@ -22,28 +22,26 @@ import CartWidget from '../CartWidget/CartWidget';
     return (
       
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-
-         <Link to="/"> 
-          {/* <Navbar.Brand href=" " onClick={goToHome.bind(this)}> */}
+        <Container >
+        <Nav className="me-auto">
+         <NavLink to="/" style={{textDecoration:'none',color:'grey'}}> 
+          
          
           <img
               src={pic}
-              width="30"
-              height="30"
+              width="40"
+              height="40"
               className="d-inline-block align-top"
               alt=""
             />
-             Tappi electronics</Link>
+            </NavLink>
           
-             
+             </Nav>
+             <span>span</span>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">  
             <Nav className="me-auto">
-            
-              {/* {props.categories.map(u => <Nav.Link  key={u.categoryId} href=" " onClick={goToCategory.bind(u.categoryId)} >{u.categoryName}</Nav.Link> )} */}
-               {/* {props.categories.map(u => <li><Link to={routeCategory+ u.categoryId}>{u.categoryName}</Link></li> )} */}
-              {/* {props.categories.map(u => <NavLink to={routeCategory+ u.id} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )} */}
+        
               {props.categories.map(u => <NavLink to={routeCategory+ u.key} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
               
             </Nav>

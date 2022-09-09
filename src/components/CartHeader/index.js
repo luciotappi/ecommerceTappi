@@ -16,39 +16,39 @@ export default function CartHeader () {
             
                 <Row>
                     <Col className="colCartCard" style={{backgroundColor:'rgb(50, 56, 63)'}}>
-                    <ListGroup className="list-group-flush" >
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}>Imagen</ListGroup.Item>
+                         <ListGroup className="list-group-flush" >
+                              <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}>Imagen</ListGroup.Item>
                          </ListGroup>
                     </Col>
                     <Col className="colCartCard">
                          <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'transparent',fontSize:'1.5rem'}}>Titulo</ListGroup.Item>
+                              <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'transparent',fontSize:'1.5rem'}}>Titulo</ListGroup.Item>
                          </ListGroup>
                     </Col>
 
                     <Col className="colCartCard" style={{backgroundColor:'rgb(50, 56, 63)'}}>
-                    <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> Cantidad</ListGroup.Item>
+                         <ListGroup className="list-group-flush">
+                              <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> Cantidad</ListGroup.Item>
                          </ListGroup>
                     </Col>
 
                     <Col className="colCartCard">    
                          <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'transparent',fontSize:'1.5rem'}}> Precio Unitario (AR$)</ListGroup.Item>
+                              <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'transparent',fontSize:'1.5rem'}}> Precio Unitario (AR$)</ListGroup.Item>
                          </ListGroup>
                     </Col>
 
                     <Col className="colCartCard" style={{backgroundColor:'rgb(50, 56, 63)'}}>    
                          <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> Precio total (AR$)</ListGroup.Item>
+                              <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'rgb(50, 56, 63)',fontSize:'1.5rem'}}> Precio total (AR$)</ListGroup.Item>
                          </ListGroup>
                     </Col>
 
                     <Col className="colCartCard">
                             <Row>
-                            <ListGroup className="list-group-flush">
-                         <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'transparent',fontSize:'1.5rem'}}> Opciones</ListGroup.Item>
-                         </ListGroup>
+                              <ListGroup className="list-group-flush">
+                                   <ListGroup.Item bg ="dark" style={{color:'rgba(57,180,224,1)' ,background:'transparent',fontSize:'1.5rem'}}> Opciones</ListGroup.Item>
+                              </ListGroup>
                             </Row>
                             
                     </Col>

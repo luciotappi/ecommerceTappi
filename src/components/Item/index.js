@@ -31,10 +31,10 @@ function Item(props) {
       variant="top" 
       src={props.image} 
       style = {{
-        // float: 'top',
+        
         width:  '100%',
-        // objectFit: 'cover',
         height: '20vh',
+
         }}
       />
 
@@ -49,7 +49,7 @@ function Item(props) {
           
         }}
         >{props.title}</Card.Title>
-        {/* <Card.Text>{props.description}</Card.Text> */}
+  
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item
@@ -74,9 +74,7 @@ function Item(props) {
           Mas informacion
         </Card.Link>  
       </Card.Body>
-      {/* <Card.Body>
-        <ItemCount stock={props.stock} initial={props.initial} ></ItemCount>
-      </Card.Body> */}
+      
     </Card>
   );
 }

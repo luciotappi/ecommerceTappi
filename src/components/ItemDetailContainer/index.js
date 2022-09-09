@@ -4,7 +4,7 @@ import { useParams,useNavigate} from 'react-router-dom';
 
 import ItemDetail from "../ItemDetail";
 
-import {getItem, getItemFirebase, getProductsData} from '../../Data/Data';
+import { getItemFirebase} from '../../Data/Data';
 
 
 //imports de materialize UI
@@ -70,7 +70,7 @@ function ItemDetailContainer(props) {
         </div>
         :
         <div>
-         {validItem && <ItemDetail {...data}/>}
+         {validItem && <ItemDetail {...data} />}
          {!validItem && 
          
           <div style={{height:'60vh',display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column'}}>

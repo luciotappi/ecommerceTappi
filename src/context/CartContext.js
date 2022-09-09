@@ -1,7 +1,11 @@
-import { serverTimestamp, updateDoc,increment } from "firebase/firestore";
+//react imports 
 import React, { useState } from "react";
 
+//firebase imports
+import { serverTimestamp} from "firebase/firestore";
+
 import {createOrderInFirestore,getItemFirebase,updateStock} from '../Data/Data';
+
 export const CartContext = React.createContext([]);
 
 export default function CartCustomContext({children})
@@ -9,7 +13,7 @@ export default function CartCustomContext({children})
    
 {
 
-    // const [cart, setCart] = useState([]);
+   
     const [cart, setCart] = useState(() => {
         // getting stored value
         const saved = localStorage.getItem("cart");
@@ -17,14 +21,14 @@ export default function CartCustomContext({children})
         return initialValue || [];
       });
 
-    // const [cartQuantity,setCartQuantity]=useState(0);
+    
     const [cartQuantity, setCartQuantity] = useState(() => {
         // getting stored value
         const saved = localStorage.getItem("cartQuantity");
         const initialValue = JSON.parse(saved);
         return initialValue || 0;
       });
-    // const [totalPrice,setTotalPrice]=useState(0);
+    
     const [totalPrice, setTotalPrice] = useState(() => {
         // getting stored value
         const saved = localStorage.getItem("totalPrice");
@@ -35,11 +39,9 @@ export default function CartCustomContext({children})
 
 
     const  addCartItem = (producto,quantity) => {
-        console.log(quantity);
-        console.log(producto.quantity);
-        console.log(cart);
+       
         const productInCart = cart.find((productInCart)=> productInCart.idProd === producto.idProd );
-        console.log(productInCart);
+        
         if (productInCart){
             const newCart = cart.map((productInCart) => {
 
@@ -56,12 +58,12 @@ export default function CartCustomContext({children})
 
                 cartQuantity + producto.quantity
             );
-            let cartCuantityAux = cartQuantity + producto.quantity;
+            
             localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity + producto.quantity));
 
             setTotalPrice(
 
-                // totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
+                
                 totalPrice +producto.price*producto.quantity
             );
 
@@ -77,12 +79,12 @@ export default function CartCustomContext({children})
                 cartQuantity + producto.quantity
             );
             
-            let cartCuantityAux = cartQuantity + producto.quantity;
+            
             localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity + producto.quantity));
 
             setTotalPrice(
 
-                // totalPrice + parseInt(producto.price.replace('$', '')*producto.quantity)
+                
                 totalPrice + producto.price*producto.quantity
             );
            
@@ -100,10 +102,6 @@ export default function CartCustomContext({children})
     const removeItem =(id) => {
 
         const prodToRemove = cart.filter ((product)=> product.idProd == id);
-        console.log(cart);
-        console.log(id);
-        console.log(prodToRemove);
-        console.log(prodToRemove[0].quantity);
         const newCart =cart.filter ((product)=> product.idProd !== id);
         setCart(newCart);
         localStorage.setItem('cart',JSON.stringify(newCart));
@@ -136,11 +134,10 @@ export default function CartCustomContext({children})
 
     const isInCart = (id) => {
         
-        console.log("ID QUE LE PASO AL CONTEXT : > ",id);
-        console.log("Y HASTA AHORA EL CART ES >: ",cart);
+        
         try {
             const idInCart = cart.find((productInCart)=> productInCart.id == id );
-            console.log("EL RESULTADO DEL FIND ES >>:  ",idInCart)
+            
             if (idInCart !=null) {
 
                 setProductInCart(true)
@@ -163,7 +160,7 @@ export default function CartCustomContext({children})
         //stock check
 
         let stockError= false;
-        console.log (cart);
+        
         let counter =0;
         let finish=false;
         Object.keys(cart).forEach(key => {
@@ -208,8 +205,7 @@ export default function CartCustomContext({children})
                                             status:'generada',
                                             total:totalPrice
                                         }
-                                        console.log(cart);
-                                        console.log(order);
+                                        
                                         createOrderInFirestore(order)
                                         .then(result => {
                                             alert("Tu orden ha sido creada. Numero de orden: " + result.id);
@@ -237,7 +233,6 @@ export default function CartCustomContext({children})
     
      return(
         <CartContext.Provider value={{addCartItem,removeItem,removeAll,isInCart,createOrder, cartData: cart, cartQuantity:cartQuantity,totalPrice,productInCart:productinCart}}>
-            {/* <CartContext.Provider value={{addCartItem,removeItem,removeAll, cartData: cart}}> */}
             {children}
         </CartContext.Provider>
     )

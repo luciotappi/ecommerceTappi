@@ -12,8 +12,8 @@ import './ItemList.css'
 function ItemList(data) {
 
     return (
-        
-  <Row  className="g-4 h-100 d-flex">
+   <div style={{height:'fit-content',minHeight:'60vh',display:'flex',alignItems:'center'}}>
+    <Row  className="g-4 h-100 d-flex">
     {
        
        
@@ -26,6 +26,8 @@ function ItemList(data) {
       </Col>
     ))}
   </Row>
+   </div>     
+  
         );
 
         
