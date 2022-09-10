@@ -11,11 +11,11 @@ export default function Home()
     return(
         <>
         
-        {/* Aqui falta titulo para presentar los productos */}
-        <div className="homeContainer">
+        
+        {/* <div className="homeContainer">
             <HomeCarousel/>
         </div>
-        
+         */}
         <ItemListContainer greetings={'Pagina en construcción... Lamentamos las molestias! :('}/> 
         </>
     );

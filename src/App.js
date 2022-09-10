@@ -41,8 +41,8 @@ function App() {
     .catch(err=>console.log(err))
   },[])
 
-  console.log("LAS CATEGORIAS SON : " + categories);
-  console.log(categories.length);
+  // console.log("LAS CATEGORIAS SON : " + categories);
+  // console.log(categories.length);
 
   return (
 

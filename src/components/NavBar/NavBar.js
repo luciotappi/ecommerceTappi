@@ -17,8 +17,8 @@ import CartWidget from '../CartWidget/CartWidget';
     const routeCategory = "/category/";
 
 
-    console.log("LAS PROPS DE NAVBAR SON ");
-    console.log(props.categories);
+    //console.log("LAS PROPS DE NAVBAR SON ");
+    //console.log(props.categories);
     return (
       
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -42,7 +42,7 @@ import CartWidget from '../CartWidget/CartWidget';
           <Navbar.Collapse id="responsive-navbar-nav">  
             <Nav className="me-auto">
         
-              {props.categories.map(u => <NavLink to={routeCategory+ u.key} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
+              {props.categories.map(u => <NavLink key={u.key} to={routeCategory+ u.key} className="nav-link"  style={{ textDecoration: 'none' }}>{u.categoryName}</NavLink> )}
               
             </Nav>
 

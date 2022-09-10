@@ -1,37 +1,14 @@
 import {db} from '../api/APIFirebase'
 import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc } from 'firebase/firestore'
 
-// export const Categories =[
-
-//   {
-//     "categoryName":"Microcontroladores",
-//     "categoryId":0
-//   },
-
-//   {
-//     "categoryName":"Placas",
-//     "categoryId":1
-//   },
-  
-//   {
-//     "categoryName":"Sensores",
-//     "categoryId":2
-//   }
- 
-
-// ]
-
       export function searchCategoriesFirebase () {
 
-        
-    
         return new Promise( (resolve, reject) => {
             // creo la referencia a la coleccion que quiero traer
             const colRef = collection(db,'Categories');
           
               getDocs(colRef).then((snapshot) => {
-                console.log('>> snapshot.docs: ', snapshot.docs);
-    
+                // console.log('>> snapshot.docs: ', snapshot.docs);
     
                 const categoriasFB = snapshot.docs.map((rawDoc) => {
                     return {
@@ -40,10 +17,8 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
                     }
     
                 });
-           
-           
-    
-                console.log('>> Categorias Firebase:', categoriasFB);
+              
+                //console.log('>> Categorias Firebase:', categoriasFB);
                 resolve(categoriasFB);
     
             }, (error) => {
@@ -51,8 +26,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
             });
            
         });
-    
-    
+      
     }         
 
       export function getProductsData (categoryId) {
@@ -65,7 +39,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
             if (categoryId ==null )
             {
               getDocs(colRef).then((snapshot) => {
-                console.log('>> snapshot.docs: ', snapshot.docs);
+                //console.log('>> snapshot.docs: ', snapshot.docs);
     
     
                 const products4ConFormato = snapshot.docs.map((rawDoc) => {
@@ -78,7 +52,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
            
            
     
-                console.log('>> products4:', products4ConFormato);
+                //console.log('>> products4:', products4ConFormato);
                 resolve(products4ConFormato);
     
             }, (error) => {
@@ -95,7 +69,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
             getDocs(qCategories).then((snapshot)=>{
               
               
-              console.log('>> snapshot.docs: ', snapshot.docs);
+              //console.log('>> snapshot.docs: ', snapshot.docs);
     
     
                 const categoriesConFormato = snapshot.docs.map((rawDoc) => {
@@ -108,15 +82,15 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
            
            ////
 
-           console.log("Query de categorias:", categoriesConFormato);
-           console.log(categoriesConFormato.length);
+           //console.log("Query de categorias:", categoriesConFormato);
+           //console.log(categoriesConFormato.length);
 
 
            //logica de control si no existe la categoria ingresada por ruta de navegador
            
            if (categoriesConFormato.length ==0) {
 
-            console.log("NO EXISTE LA CATEGORIA!");  
+            //console.log("NO EXISTE LA CATEGORIA!");  
             const products4ConFormato = snapshot.docs.map((rawDoc) => {
               return {
                   id: rawDoc.id,
@@ -124,7 +98,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
               }
 
           });
-            console.log('>> products4:', products4ConFormato);
+            //console.log('>> products4:', products4ConFormato);
             resolve(products4ConFormato);
 
 
@@ -136,7 +110,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
                 const q = query(collection(db,'products4'),where("categoryName","==",categoriesConFormato[0].id));
                 getDocs(q).then((snapshot)=>{
                   
-                  console.log('>> snapshot.docs: ', snapshot.docs);
+                  //console.log('>> snapshot.docs: ', snapshot.docs);
 
 
                     const products4ConFormato = snapshot.docs.map((rawDoc) => {
@@ -147,7 +121,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
 
                     });
 
-                    console.log('>> products4:', products4ConFormato);
+                    //console.log('>> products4:', products4ConFormato);
                     resolve(products4ConFormato);
 
                 }, (error) => {
@@ -166,31 +140,7 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
                     reject('>> Error al intentar traer los docs: ', error);
                 
                 })
-
-
-
-                // const q = query(collection(db,'products4'),where("categoryName","==",categoryId));
-                // getDocs(q).then((snapshot)=>{
-                  
-                //   console.log('>> snapshot.docs: ', snapshot.docs);
-
-
-                //     const products4ConFormato = snapshot.docs.map((rawDoc) => {
-                //         return {
-                //             id: rawDoc.id,
-                //             ...rawDoc.data()
-                //         }
-
-                //     });
-
-                //     console.log('>> products4:', products4ConFormato);
-                //     resolve(products4ConFormato);
-
-                // }, (error) => {
-                //     reject('>> Error al intentar traer los docs: ', error);
-                
-                // })
-                
+             
                             
                           }
 
@@ -210,11 +160,11 @@ import { collection, getDocs,query,where,doc,getDoc,setDoc,increment,updateDoc }
       const docSnap = await getDoc(itemRef);
       if(docSnap.exists()) {
 
-          console.log(docSnap.data());
+          //console.log(docSnap.data());
           response = docSnap.data();
 
       } else {
-          console.log("Document does not exist")
+          //console.log("Document does not exist")
       }
   
   } catch(error) {

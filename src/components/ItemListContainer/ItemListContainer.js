@@ -1,11 +1,19 @@
 // react imports
 
 import { useEffect, useState } from 'react';
-import { useParams,NavLink,Link} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 
 //components imports 
 import ItemList from "../ItemList";
 import {getProductsData} from '../../Data/Data';
+
+//imports de materialize UI
+
+import ErrorIcon from '@mui/icons-material/Error';
+import HomeIcon from '@mui/icons-material/Home';
+//imports de react-bootstrap
+
+import Button from 'react-bootstrap/Button';
 
 function ItemListContainer(props) {
 
@@ -32,10 +40,15 @@ function ItemListContainer(props) {
     // getFetch
   },[idCategory])
   
-  console.log(data);
+  const navigateFn = useNavigate();
+
+  const goToHome = () => {
+      navigateFn('/');
+  }
+  //console.log(data);
   
-  console.log("LOS DATOS SON : " + data);
-  console.log(data.length);
+  //console.log("LOS DATOS SON : " + data);
+  //console.log(data.length);
 
   //validData controla si la categoria ingresada por barra de busqueda de navegador existe.
 
@@ -52,28 +65,38 @@ function ItemListContainer(props) {
        loading ? 
         <div className="loading">
           <h2 style={{height:'100vh' , color:'rgba(57,180,224,1)'}}>CARGANDO...</h2>
-          <div class="loader-wheel"></div>
+          <div className="loader-wheel"></div>
         </div>
         :
         <div>
-          <div className="d-flex align-text-bottom" style={{minHeight:'20vh',color:'white', width:'75%', margin:'auto',alignItems:'end'}}>
+            <div className="d-flex align-text-bottom" style={{minHeight:'20vh',color:'white', width:'75%', margin:'auto',alignItems:'end'}}>
 
-            <h6>Productos</h6>
+              <h6>Productos</h6>
 
+            </div>
+
+          <div className="d-flex align-items-center" style={{
+          
+            width:'75%',
+            margin:'auto'
+            }}>
+
+            {validData &&
+              < ItemList data={data}/>}
           </div>
 
-        <div className="d-flex align-items-center" style={{
-         
-          width:'75%',
-          margin:'auto'
-       }}>
-         {validData &&
-          < ItemList data={data}/>}
+          {!validData &&
 
-         {!validData &&
-          <h2>La categoria ingresada no existe!</h2>}
-       </div>
+              <div style={{height:'60vh',display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column'}}>
+                <ErrorIcon color="info"></ErrorIcon>
+                  <h6 style= {{color:"white"}}>La categoría {idCategory} no existe</h6>
+                <Button variant="primary"  onClick={() => goToHome()} ><HomeIcon/>Volver al Inicio</Button>
+               
+
+              </div>
+                }
         </div>
+        
   
   );
 

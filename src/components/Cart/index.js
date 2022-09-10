@@ -29,7 +29,8 @@ export default function Cart() {
 
   
     const {cartData,removeAll,cartQuantity,totalPrice,createOrder}= useContext(CartContext);
-     
+    
+    //console.log(cartData);
     const navigateFn = useNavigate();
 
     const goToHome = () => {
@@ -49,45 +50,45 @@ export default function Cart() {
     
     function onInputName(evt) {
       
-      console.log(evt.target.value);
+      //console.log(evt.target.value);
       setValue({...value,
         name:evt.target.value
       }
       );
-      console.log(value);
+      //console.log(value);
     }
 
     function onInputPhone(evt) {
 
-      console.log(evt.target.value);
+      //console.log(evt.target.value);
       setValue({...value,
         phone:evt.target.value
       });
-      console.log(value);
+      //console.log(value);
     }
 
     function onInputEmail(evt) {
 
-      console.log(evt.target.value);
+      //console.log(evt.target.value);
       setValue({...value,
         email:evt.target.value
       });
-      console.log(value);
+      //console.log(value);
 
     }
     function onInputEmailConfirm(evt) {
       
-      console.log(evt.target.value);
+      //console.log(evt.target.value);
       setValue({...value,
         emailchecked:evt.target.value
       });
-      console.log(value); 
+      //console.log(value); 
 
     }
 
     function onFormSubmit(e){
         e.preventDefault()
-        console.log(value);
+        //console.log(value);
         if ((value.name == "") || (value.phone == "") || (value.email == "") || (value.emailchecked == ""))
         {
           alert("Por favor completar todos los campos")
@@ -96,7 +97,7 @@ export default function Cart() {
           if (value.email == value.emailchecked)
           {
             createOrder(value);
-          console.log("ORDEN CREADA");
+          //console.log("ORDEN CREADA");
           }
           else{
             alert("Por favor verificar que el mail sea el correcto")
@@ -113,7 +114,7 @@ export default function Cart() {
             {
               cartData.map((item)=> {
                   
-                  return <CartCard {...item}/>
+                  return <CartCard  key={item.idProd} {...item}/>
                 
               })
             } 

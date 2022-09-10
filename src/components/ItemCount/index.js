@@ -22,9 +22,9 @@ function ItemCount({stock, initial, addON}) {
 
     useEffect(() => {
     const btnAddCart =document.getElementsByClassName('btnAddCart');
-    console.log(btnAddCart.fontSize);
+    //console.log(btnAddCart.fontSize);
         return () => {
-            console.log('Contador listo para ser cleanup!');
+            //console.log('Contador listo para ser cleanup!');
         }        
     });
 
@@ -34,7 +34,7 @@ function ItemCount({stock, initial, addON}) {
 
         if (quantity <=initial)
         {
-          console.log('la cantidad minima a pedir es ' + quantity);       
+          //console.log('la cantidad minima a pedir es ' + quantity);       
         } else{
             setQuantity(
                 quantity -1
@@ -47,7 +47,7 @@ function ItemCount({stock, initial, addON}) {
         
         if (quantity >= stock)
         {
-          console.log('la cantidad maxima no puede superar el stock. STOCK = ' + stock);       
+          //console.log('la cantidad maxima no puede superar el stock. STOCK = ' + stock);       
         } else{
             
             setQuantity(quantity +1);
@@ -56,7 +56,7 @@ function ItemCount({stock, initial, addON}) {
         
     };
 
-    console.log(quantity);
+    //console.log(quantity);
     return (
 
         <div className="container  border border-dark rounded mx-auto" style = {{width:"100%",margin:"0px"}}>

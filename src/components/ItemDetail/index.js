@@ -31,10 +31,10 @@ function ItemDetail(props) {
         isInCart(idItem);
         if (productInCart==true){
             setFinish(true);
-            console.log("ACA NO QUIERO ENTRAR");
+            
         }
         return ()=> {
-            console.log("EL ITEM ESTABA EN CARRITO ? > ",productInCart)
+            //console.log("EL ITEM ESTABA EN CARRITO ? > ",productInCart)
             
 
         }

@@ -39,17 +39,17 @@ function ItemDetailContainer(props) {
   },[idItem])
 
   useEffect(() => {
-    console.log('Recibi itemID y es : ',idItem);
+    //console.log('Recibi itemID y es : ',idItem);
     return ()=> {
-      console.log('Voy a cambiar itemId:',idItem);
+      //console.log('Voy a cambiar itemId:',idItem);
     }
   },[idItem]);
   
-  console.log(data.id);
-  console.log(data.title);
-  console.log("LOS DATOS DEL DETALLE SON: ", data);
-  console.log(data.length);
-  console.log(data[0]); 
+  //console.log(data.id);
+  //console.log(data.title);
+  //console.log("LOS DATOS DEL DETALLE SON: ", data);
+  //console.log(data.length);
+  //console.log(data[0]); 
 
   // La variable validItem controla si el id ingresado por ruta existe o no.
   let validItem = false;

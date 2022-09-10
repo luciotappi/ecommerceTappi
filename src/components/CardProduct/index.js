@@ -7,11 +7,11 @@ import ItemCount from "../ItemCount";
 function CardProduct(props) {
 
   const cantItems =3;
-  console.log("El titulo es : " + props.stock );
+  //console.log("El titulo es : " + props.stock );
 
   return (
     
-        <Card border="secondary" style={{ width: '18rem', color: 'rgb(145,145,145)', margin:'5%' }} bg="dark">
+      <Card border="secondary" style={{ width: '18rem', color: 'rgb(145,145,145)', margin:'5%' }} bg="dark">
       <Card.Img variant="top" src={imageUrl} />
       <Card.Body>
         <Card.Title >{props.title}</Card.Title>

@@ -32,13 +32,13 @@ function CartWidget() {
     let showCart= false;
     if (cartData.length==0){
 
-        console.log(">>Cart Data VACIO<<");
+        //console.log(">>Cart Data VACIO<<");
         
         showCart = false;
     }
 
     else {
-        console.log(">>Cart Data CON ALGO<<");
+        //console.log(">>Cart Data CON ALGO<<");
         showCart = true;
         
     }
