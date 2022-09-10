@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 import imageUrl from '../CardProduct/arduino-uno.png';
-import ItemCount from "../ItemCount";
+import ItemCount from "../Detail/ItemCount";
 
 function CardProduct(props) {
 

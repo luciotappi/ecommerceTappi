@@ -4,8 +4,8 @@ import {CartContext} from '../../context/CartContext'
 import { useNavigate } from "react-router-dom";
  
 //components imports
-import CartCard from '../CartCard/CartCard'; // para importar funciones 
-import CartHeader from '../CartHeader'; 
+import CartCard from './CartCard/CartCard'; // para importar funciones 
+import CartHeader from './CartHeader'; 
 
 //react-bootstrap imports
 import Button from 'react-bootstrap/Button';

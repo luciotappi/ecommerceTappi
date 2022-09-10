@@ -4,7 +4,7 @@ import { useParams,useNavigate} from 'react-router-dom';
 
 import ItemDetail from "../ItemDetail";
 
-import { getItemFirebase} from '../../Data/Data';
+import { getItemFirebase} from '../../../Data/Data';
 
 
 //imports de materialize UI

@@ -5,7 +5,7 @@ import { useParams,useNavigate} from 'react-router-dom';
 
 //components imports 
 import ItemList from "../ItemList";
-import {getProductsData} from '../../Data/Data';
+import {getProductsData} from '../../../Data/Data';
 
 //imports de materialize UI
 

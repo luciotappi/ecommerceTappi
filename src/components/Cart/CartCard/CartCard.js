@@ -2,7 +2,8 @@
 import React, { useContext } from "react";
 
 //context
-import {CartContext} from '../../context/CartContext'
+// import {CartContext} from '../../context/CartContext'
+import {CartContext} from '../../../context/CartContext'
 
 //react-bootstrap imports
 

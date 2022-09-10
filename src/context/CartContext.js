@@ -173,8 +173,10 @@ export default function CartCustomContext({children})
 
             getD().then(data=>
                 {
-                  
-                    if (data.stock != cart[key].stock)
+                    console.log(data.stock);
+                    console.log(cart[key].quantity);
+                    console.log(cart[key]);
+                    if (data.stock < cart[key].quantity)
                     {
                         stockError=true;
                         console.log("Error de stock en el producto :" + data.title);
@@ -186,7 +188,7 @@ export default function CartCustomContext({children})
                         if (stockError == false )
                         {
 
-                            //save order    
+                            // //save order    
                                 const itemsForDB = cart.map(item => ({
 
                                             id:item.idProd,

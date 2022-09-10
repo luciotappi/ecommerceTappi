@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 //imports
 import pic from ".//Tappi-logo.png";
 
-import CartWidget from '../CartWidget/CartWidget';
+import CartWidget from './CartWidget/CartWidget';
 
   function NavBar(props) {
 

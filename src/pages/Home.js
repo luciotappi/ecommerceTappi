@@ -1,4 +1,4 @@
-import ItemListContainer from '../components/ItemListContainer/ItemListContainer'; // para importar funciones 
+import ItemListContainer from '../components/List/ItemListContainer/ItemListContainer'; // para importar funciones 
 import HomeCarousel from '../components/HomeCarousel';
 
 //css files

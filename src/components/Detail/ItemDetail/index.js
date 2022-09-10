@@ -17,7 +17,7 @@ import ItemCount from "../ItemCount";
 import './link-to-cart.css'
 
 //context imports
-import  { CartContext }  from '../../context/CartContext';
+import  { CartContext }  from '../../../context/CartContext';
 
 function ItemDetail(props) {
 

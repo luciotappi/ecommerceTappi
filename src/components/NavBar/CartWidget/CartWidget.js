@@ -4,7 +4,7 @@ import { useNavigate} from 'react-router-dom';
 import { useContext} from 'react';
 
 // context
-import  { CartContext }  from '../../context/CartContext';
+import  { CartContext }  from '../../../context/CartContext';
 
 //material Ui imports
 import Badge from '@mui/material/Badge';

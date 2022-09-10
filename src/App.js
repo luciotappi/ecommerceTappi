@@ -6,9 +6,9 @@ import './App.css';
 
 //components
 import NavBar from './components/NavBar/NavBar'; // para importar funciones 
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'; // para importar funciones 
+import ItemListContainer from './components/List/ItemListContainer/ItemListContainer'; // para importar funciones 
 import Footer from './components/Footer'; // para importar Footer
-import ItemDetailContainer from './components/ItemDetailContainer'; // para importar funciones 
+import ItemDetailContainer from './components/Detail/ItemDetailContainer'; // para importar funciones 
 import Cart from './components/Cart';
 
 //paginas
