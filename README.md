@@ -1,7 +1,7 @@
 # Ecommerce basado en React.js
 
 Link de la pagina en Netlify! :arrow_forward: https://tappielectronics.netlify.app/ 
-
+Link del video de presentación de la página! :arrow_forward: https://www.youtube.com/watch?v=1VclB0tl--s
 ## Que van a encontar en el repositorio?
 
 -Se encuentran las carpetas default que genera react a través de npx create-reac-app App..\
