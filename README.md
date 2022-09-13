@@ -1,6 +1,6 @@
 # Ecommerce basado en React.js
 
-Link de la pagina en Netlify :arrow_forward: https://tappielectronics.netlify.app/ 
+Link de la pagina en Netlify! :arrow_forward: https://tappielectronics.netlify.app/ 
 
 ## Que van a encontar en el repositorio?
 
